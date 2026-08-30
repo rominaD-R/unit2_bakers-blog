@@ -3,14 +3,17 @@ package com.example.unit2_bakers_blog.Models;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 public class Recipe {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String title;
-    private String ingredients;
-    private String utensils;
+    // private String utensils;
     private String steps;
     private String tags;
     private String images;
@@ -19,10 +22,9 @@ public class Recipe {
 
     public Recipe() { }
 
-    public Recipe(String title, String ingredients, String utensils, String steps, String tags, String images, int userId) {
+    public Recipe(String title, String utensils, String steps, String tags, String images, int userId) {
         this.title = title;
-        this.ingredients = ingredients;
-        this.utensils = utensils;
+        // this.utensils = utensils;
         this.steps = steps;
         this.tags = tags;
         this.images = images;
@@ -31,7 +33,6 @@ public class Recipe {
     }
 
     // Getters and Setters
-
     public int getId() {
         return id;
     }
@@ -46,22 +47,6 @@ public class Recipe {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(String ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public String getUtensils() {
-        return utensils;
-    }
-
-    public void setUtensils(String utensils) {
-        this.utensils = utensils;
     }
 
     public String getSteps() {
@@ -103,4 +88,45 @@ public class Recipe {
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
+
+    // List of Ingredients, Utensils, Steps, Tags, and Images can be stored as JSON
+    // or comma-separated values in the database. You can also create separate entities
+    // for each of these if you want to have a more normalized database structure.
+
+    // INGREDIENTS
+    @ManyToMany
+    private List<Ingredient> ingredients;
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    // UTENSILS
+    @ManyToMany
+    private List<Utensil> utensils;
+
+    public List<Utensil> getUtensils() {
+        return utensils;
+    }
+
+    public void setUtensils(List<Utensil> utensils) {
+        this.utensils = utensils;
+    }
+
+    // STEPS
+    @OneToMany
+    private List<Step> steps;
+
+    public List<Step> getSteps() {
+        return steps;
+    }
+
+    public void setSteps(List<Step> steps) {
+        this.steps = steps;
+    }
+
 }

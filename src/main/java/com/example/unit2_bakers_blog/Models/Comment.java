@@ -5,7 +5,10 @@ import jakarta.persistence.*;
 @Entity
 public class Comment {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String content;
     private int userId;
     private int recipeId;
