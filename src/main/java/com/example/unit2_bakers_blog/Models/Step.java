@@ -13,6 +13,9 @@ public class Step {
     private int order;
     private int postId;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
     public Step() {
     }
 

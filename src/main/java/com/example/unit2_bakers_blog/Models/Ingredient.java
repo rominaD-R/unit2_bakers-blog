@@ -2,6 +2,8 @@ package com.example.unit2_bakers_blog.Models;
 
 import jakarta.persistence.*;
 
+@Entity
+@Table(name = "ingredients")
 public class Ingredient {
 
     @Id

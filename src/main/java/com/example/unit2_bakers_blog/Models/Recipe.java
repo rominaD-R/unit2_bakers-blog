@@ -14,7 +14,7 @@ public class Recipe {
 
     private String title;
     // private String utensils;
-    private String steps;
+    // private String steps;
     private String tags;
     private String images;
     private int userId;
@@ -25,7 +25,7 @@ public class Recipe {
     public Recipe(String title, String utensils, String steps, String tags, String images, int userId) {
         this.title = title;
         // this.utensils = utensils;
-        this.steps = steps;
+        // this.steps = steps;
         this.tags = tags;
         this.images = images;
         this.userId = userId;
@@ -47,14 +47,6 @@ public class Recipe {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getSteps() {
-        return steps;
-    }
-
-    public void setSteps(String steps) {
-        this.steps = steps;
     }
 
     public String getTags() {
@@ -95,6 +87,11 @@ public class Recipe {
 
     // INGREDIENTS
     @ManyToMany
+    @JoinTable(
+            name = "recipe_ingredients",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "ingredient_id")
+    )
     private List<Ingredient> ingredients;
 
     public List<Ingredient> getIngredients() {
@@ -107,6 +104,11 @@ public class Recipe {
 
     // UTENSILS
     @ManyToMany
+    @JoinTable(
+            name = "recipe_utensils",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "utensil_id")
+    )
     private List<Utensil> utensils;
 
     public List<Utensil> getUtensils() {

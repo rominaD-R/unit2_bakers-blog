@@ -1,7 +1,14 @@
 package com.example.unit2_bakers_blog.Models;
 
+import jakarta.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "utensils")
 public class Utensil {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String utensil;
@@ -27,5 +34,8 @@ public class Utensil {
     public void setUtensil(String utensil) {
         this.utensil = utensil;
     }
+
+    @ManyToMany(mappedBy = "utensils")
+    private List<Recipe> recipes;
 
 }
