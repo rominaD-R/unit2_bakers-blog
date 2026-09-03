@@ -1,6 +1,7 @@
 package com.example.unit2_bakers_blog.Controller;
 
 import com.example.unit2_bakers_blog.Models.Recipe;
+import com.example.unit2_bakers_blog.Models.Step;
 import com.example.unit2_bakers_blog.Models.User;
 import com.example.unit2_bakers_blog.Repository.RecipeRepository;
 import org.springframework.web.bind.annotation.*;
@@ -27,16 +28,28 @@ public class RecipeController {
         return  "<form method = 'post'>" +
                 "<label> Recipe Title: "
                 + "<input type ='text' name = 'title'> " +
-                "<label> Enter description: "+
-                "<input type = 'text' name = 'description'> " +
-                "<input type = 'submit' >"+
+                "<label> Enter tag: "+
+                "<input type = 'text' name = 'tags'> " +
+                "<input type = 'submit' >" +
+                "<label> Enter Step 1: "+
+                "<input class='step' type = 'text' name = 'step1'> " +
+                "<label> Enter Step 2: "+
+                "<input class='step' type = 'text' name = 'step2'> " +
                 "</form>" ;
     }
 
+    // MIKE ADVICE
+    // Take in one field called 'steps' in the UI and then allow seperate fields/inputs in the UI to allow adding steps.
+    // THen when sending it to API, make it one string, BUT between each step, put a limiter like a comma or %
+    // SO, make dynamic add steps to front-end form, THEN make it one string WITH LIMITERS in Java
+
+
     @PostMapping("form")
     public String handleForm(Recipe recipe){
+        recipe.setUserId(2);
+        recipe.setCreatedAt(new java.sql.Timestamp(System.currentTimeMillis()));
         recipeRepository.save(recipe);
-        return "Recipe " + recipe.getTitle() + " added successfully!";
+        return "Recipe " + recipe.getTitle() + " added successfully!  Recipe ID: " + recipe.getId();
     }
 
     @GetMapping("/recipe/{id}")

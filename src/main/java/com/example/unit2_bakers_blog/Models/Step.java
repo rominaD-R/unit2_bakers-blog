@@ -3,6 +3,7 @@ package com.example.unit2_bakers_blog.Models;
 import jakarta.persistence.*;
 
 @Entity
+// @Table(name = "recipe_steps")
 public class Step {
 
     @Id
@@ -10,18 +11,17 @@ public class Step {
     private int id;
 
     private String stepDesc;
-    private int order;
     private int postId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
+    // @JoinColumn(name = "recipe_id")
+    private Recipe recipe;
 
     public Step() {
     }
 
-    public Step(String stepDesc, int order, int postId) {
+    public Step(String stepDesc, int postId) {
         this.stepDesc = stepDesc;
-        this.order = order;
         this.postId = postId;
     }
 
@@ -41,13 +41,13 @@ public class Step {
         this.stepDesc = stepDesc;
     }
 
-    public int getOrder() {
-        return order;
-    }
-
-    public void setOrder(int order) {
-        this.order = order;
-    }
+//    public int getStep_id() {
+//        return step_id;
+//    }
+//
+//    public void setStep_id(int step_id) {
+//        this.step_id = step_id;
+//    }
 
     public int getPostId() {
         return postId;
