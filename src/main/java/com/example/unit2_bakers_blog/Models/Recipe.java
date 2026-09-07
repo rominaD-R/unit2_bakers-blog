@@ -14,7 +14,8 @@ public class Recipe {
 
     private String title;
     private String tags;
-    // private String images;
+    private String mainImageUrl;
+    private String images;
     private int userId;
     private java.sql.Timestamp createdAt;
 
