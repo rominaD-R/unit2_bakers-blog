@@ -1,0 +1,31 @@
+.navbar {
+    background-color: #60282C;
+    color: hsl(45, 100%, 96%);
+    display: flex;
+    padding: 10px 20px;
+    height: 80px;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.navbar div {
+    align-content: center;
+}
+
+.navbar h1 {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 32px;
+}
+
+.navbar a {
+    color: hsl(45, 100%, 96%);   
+    align-self: center;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+}
