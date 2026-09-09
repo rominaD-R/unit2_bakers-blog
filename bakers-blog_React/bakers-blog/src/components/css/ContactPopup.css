@@ -1,0 +1,81 @@
+.popup-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-background .top-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.popup-background .top-row button {
+    background-color: transparent;
+}
+
+.popup-contact {
+    position: relative;
+    padding: 32px;
+    width: 95%;
+    max-width: 700px;
+    background-color: white;
+}
+
+.popup-contact form {
+    margin-bottom: 20px;
+}
+
+.popup-contact h2 {
+    color: #60282C;
+}
+
+.popup-contact table {
+    color: #60282C;
+    border: #60282C 2px solid;
+    text-align: left;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.popup-contact th, td {
+    border: #60282C 1px solid;
+    padding: 4px 6px;
+}
+
+label {
+    color: #60282C;
+}
+
+input[type=text], input[type=email], textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  cursor: pointer;
+  background-color: #ECD69C;
+  color: #60282C;
+  padding: 8px 14px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+}
+
+input[type=submit]:hover {
+  transition: 0.4s;
+  background-color: #f2cd6f;
+  color: #77292f;
+}

@@ -6,6 +6,7 @@ import com.example.unit2_bakers_blog.Models.User;
 import com.example.unit2_bakers_blog.Repository.CommentRepository;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/comments")
 public class CommentController {

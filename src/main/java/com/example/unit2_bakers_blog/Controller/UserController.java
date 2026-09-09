@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -49,7 +50,7 @@ public class UserController {
         return userRepository.findById(id).orElse(null);
     }
 
-    @PostMapping("/users")
+    @PostMapping()
     public User addItem(@RequestBody User user) {
         return userRepository.save(user);
     }

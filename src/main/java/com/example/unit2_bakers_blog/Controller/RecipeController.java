@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/recipes")
 public class RecipeController {
@@ -57,7 +58,7 @@ public class RecipeController {
         return recipeRepository.findById(id).orElse(null);
     }
 
-    @PostMapping("/recipes")
+    @PostMapping()
     public Recipe addItem(@RequestBody Recipe recipe) {
         return recipeRepository.save(recipe);
     }

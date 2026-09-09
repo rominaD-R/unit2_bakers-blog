@@ -1,0 +1,40 @@
+#searchbar {
+    width: 100%;
+    border: none;
+    border-bottom: 2px #562312 solid;
+    padding: 14px;
+    font-size: 18px;
+}
+
+.text-cont.search h2 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.search-bottom {
+    display: flex;
+    margin-top: 24px;
+    gap: 24px;
+}
+
+.filters {
+    width: 500px;
+    background-color: grey;
+}
+
+#resultsDiv {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+#resultsDiv .recipe-card {
+    height: 350px;
+}
+
+@media screen and (max-width: 800px) {
+    .filters {
+        display: none;
+    }
+}
