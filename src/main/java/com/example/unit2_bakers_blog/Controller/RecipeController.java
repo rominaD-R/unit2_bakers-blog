@@ -58,7 +58,7 @@ public class RecipeController {
         return recipeRepository.findById(id).orElse(null);
     }
 
-    @PostMapping("/recipes")
+    @PostMapping()
     public Recipe addItem(@RequestBody Recipe recipe) {
         return recipeRepository.save(recipe);
     }

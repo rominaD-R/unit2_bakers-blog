@@ -16,6 +16,7 @@ function Nav() {
             <a><Link to="search">Search</Link></a>
             {/* <a><Link to="/types">Types</Link></a> */}
             <a><Link to="/about">About</Link></a>
+            <a><button><Link to="/login">Sign In</Link></button></a>
         </div>
     </div>
  );
