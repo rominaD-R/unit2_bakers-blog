@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useParams, Link } from 'react-router';
 import { recipeMockData } from '../data/recipes'
 import CommentSection from '../components/CommentSection';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import './IndividualRecipe.css'
 
 export default function IndividualRecipe() {
@@ -23,6 +25,7 @@ export default function IndividualRecipe() {
     return (
         <div className='text-cont individual-recipe-page'>
             <h2>{currentRecipe.title}</h2>
+            <FontAwesomeIcon icon={faBookmark} />
             <div className='main-img'>
                 <img src={currentRecipe.mainImage} alt={currentRecipe.title} />
             </div>
