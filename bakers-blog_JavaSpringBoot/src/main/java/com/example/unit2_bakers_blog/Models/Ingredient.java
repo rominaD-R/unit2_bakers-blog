@@ -2,6 +2,8 @@ package com.example.unit2_bakers_blog.Models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "ingredients")
 public class Ingredient {
@@ -11,6 +13,7 @@ public class Ingredient {
     private int id;
 
     private String ingredient;
+    private int recipeId;
 
     public Ingredient() {
     }
@@ -34,4 +37,15 @@ public class Ingredient {
     public void setIngredient(String ingredient) {
         this.ingredient = ingredient;
     }
+
+    public int getRecipeId() {
+        return recipeId;
+    }
+
+    public void setRecipeId(int recipeId) {
+        this.recipeId = recipeId;
+    }
+
+    @ManyToMany(mappedBy = "ingredients")
+    private List<Recipe> recipes;
 }

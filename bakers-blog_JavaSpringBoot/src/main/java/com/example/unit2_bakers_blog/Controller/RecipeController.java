@@ -3,7 +3,9 @@ package com.example.unit2_bakers_blog.Controller;
 import com.example.unit2_bakers_blog.Models.Recipe;
 import com.example.unit2_bakers_blog.Models.Step;
 import com.example.unit2_bakers_blog.Models.User;
+import com.example.unit2_bakers_blog.Models.Utensil;
 import com.example.unit2_bakers_blog.Repository.RecipeRepository;
+import com.example.unit2_bakers_blog.Repository.UtensilRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,9 +16,11 @@ import java.util.List;
 public class RecipeController {
 
     private final RecipeRepository recipeRepository;
+    private final UtensilRepository utensilRepository;
 
-    public RecipeController(RecipeRepository recipeRepository) {
+    public RecipeController(RecipeRepository recipeRepository,  UtensilRepository utensilRepository) {
         this.recipeRepository = recipeRepository;
+        this.utensilRepository = utensilRepository;
     }
 
     @GetMapping("/all")
@@ -54,12 +58,30 @@ public class RecipeController {
     }
 
     @GetMapping("/recipe/{id}")
-    public Recipe getItem(@PathVariable int id) {
+    public Recipe getItem(@PathVariable(name = "id") int id) {
         return recipeRepository.findById(id).orElse(null);
     }
 
     @PostMapping()
     public Recipe addItem(@RequestBody Recipe recipe) {
+        List<Utensil> utensils = recipe.getUtensils()
+                .stream()
+                .map(utensil -> {
+
+                    System.out.println("UTENSIL RECEIVED: " + utensil.getUtensil());
+
+                    return utensilRepository.findByUtensil(utensil.getUtensil())
+                            .orElseGet(() -> {
+                                System.out.println("CREATING NEW UTENSIL: " + utensil.getUtensil());
+                                return utensilRepository.save(utensil);
+                            });
+                })
+                .toList();
+
+        System.out.println("Setting utensils:  ");
+        recipe.setUtensils(utensils);
+
+        System.out.println("We have set the utensils!!");
         return recipeRepository.save(recipe);
     }
 

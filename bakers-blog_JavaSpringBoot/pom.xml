@@ -54,6 +54,11 @@
 			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>eu.fraho.spring</groupId>
+			<artifactId>security-jwt-base-spring-boot-starter</artifactId>
+			<version>5.3.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>

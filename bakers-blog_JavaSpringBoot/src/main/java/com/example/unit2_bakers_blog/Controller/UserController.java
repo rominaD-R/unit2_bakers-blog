@@ -3,7 +3,9 @@ package com.example.unit2_bakers_blog.Controller;
 import com.example.unit2_bakers_blog.Models.Recipe;
 import com.example.unit2_bakers_blog.Models.User;
 import com.example.unit2_bakers_blog.Repository.UserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -50,14 +52,17 @@ public class UserController {
         return userRepository.findById(id).orElse(null);
     }
 
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(11);
+
     @PostMapping()
     public User addItem(@RequestBody User user) {
+        user.setRole("basic");
+        user.setPassword(encoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
     @PutMapping("/user/{id}")
     public User updateItem(@PathVariable int id, @RequestBody User user) {
-        user.setId(id);
         return userRepository.save(user);
     }
 

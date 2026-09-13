@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useParams, Link } from 'react-router';
 import { recipeMockData } from '../data/recipes'
 import CommentSection from '../components/CommentSection';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import './IndividualRecipe.css'
 
 export default function IndividualRecipe() {
@@ -10,7 +12,27 @@ export default function IndividualRecipe() {
     let currentRecipe = recipeMockData.filter((item) => item.id == id);         // Find the recipe in the array from the ID
     currentRecipe = currentRecipe[0];                                           // The currentRecipe returned from line 10 is returned in an array, so this is to make it as a single object
 
+    const [testData, setTestData] = useState(
+        {
+            title: "",
+
+        }
+    );
+
     const [commentData, setCommentData] = useState([...currentRecipe.comments]);
+
+    const testAPI = useCallback(async () => {
+        const url = "http://localhost:8080/recipes/recipe/16";
+        try {
+            
+            const data = await fetch("http://localhost:8080/recipes/recipe/16")
+                .then((res) => res.json())
+            console.log(data);
+            setTestData((data) ? data : {});
+        } catch (error) {
+            console.error(error.message);
+        }
+    }, [setTestData]);
 
     // FUNCTION TO ADD COMMENT ON INDIVIDUAL RECIPES
     const addComment = (e) => {
@@ -20,13 +42,20 @@ export default function IndividualRecipe() {
          document.getElementById("commentText").value = '';
     }
 
+    
+
+    useEffect(() => {
+            testAPI();
+        },[ testAPI ]);
+
     return (
         <div className='text-cont individual-recipe-page'>
-            <h2>{currentRecipe.title}</h2>
-            <div className='main-img'>
+            <h2>{testData.title}</h2>
+            <FontAwesomeIcon icon={faBookmark} />
+            {/* <div className='main-img'>
                 <img src={currentRecipe.mainImage} alt={currentRecipe.title} />
             </div>
-            <div className='two-col'>
+             <div className='two-col'>
                 <div>
                     <h4>Ingredients</h4>
                     <ul>
@@ -39,15 +68,15 @@ export default function IndividualRecipe() {
                         {currentRecipe.utensils.map((item) => <li>{item}</li>)}
                     </ul>
                 </div>
-            </div>
+            </div> */}
             <div>
                 <h4>Steps</h4>
                 <ol>
-                    {currentRecipe.steps.map((item) => <li>{item}</li>)}
+                   {/* {currentRecipe.steps.map((item) => <li>{item}</li>)} */}
                 </ol>
             </div>
             {/* Transformed Comment Section from here into a separate component */}
-            <CommentSection comments={commentData} onAdd={addComment} />
+
         </div>
     )
 }

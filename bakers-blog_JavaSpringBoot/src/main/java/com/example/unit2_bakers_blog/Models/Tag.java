@@ -2,6 +2,8 @@ package com.example.unit2_bakers_blog.Models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Tag {
     @Id
@@ -41,5 +43,12 @@ public class Tag {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @ManyToMany(mappedBy = "ingredients")
+    private List<Recipe> recipes;
+
+    public List<Recipe> getRecipes() {
+        return recipes;
     }
 }

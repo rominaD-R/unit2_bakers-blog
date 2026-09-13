@@ -11,17 +11,18 @@ public class Step {
     private int id;
 
     private String stepDesc;
+    private int order;
     private int postId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "recipe_id")
     private Recipe recipe;
 
     public Step() {
     }
 
-    public Step(String stepDesc, int postId) {
+    public Step(String stepDesc, int order, int postId) {
         this.stepDesc = stepDesc;
+        this.order = order;
         this.postId = postId;
     }
 
@@ -41,13 +42,13 @@ public class Step {
         this.stepDesc = stepDesc;
     }
 
-//    public int getStep_id() {
-//        return step_id;
-//    }
-//
-//    public void setStep_id(int step_id) {
-//        this.step_id = step_id;
-//    }
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
 
     public int getPostId() {
         return postId;
