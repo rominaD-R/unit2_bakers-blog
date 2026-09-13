@@ -13,7 +13,7 @@ public class Ingredient {
     private int id;
 
     private String ingredient;
-    private int recipeId;
+    // private int recipeId;
 
     public Ingredient() {
     }
@@ -38,13 +38,13 @@ public class Ingredient {
         this.ingredient = ingredient;
     }
 
-    public int getRecipeId() {
-        return recipeId;
-    }
-
-    public void setRecipeId(int recipeId) {
-        this.recipeId = recipeId;
-    }
+//    public int getRecipeId() {
+//        return recipeId;
+//    }
+//
+//    public void setRecipeId(int recipeId) {
+//        this.recipeId = recipeId;
+//    }
 
     @ManyToMany(mappedBy = "ingredients")
     private List<Recipe> recipes;

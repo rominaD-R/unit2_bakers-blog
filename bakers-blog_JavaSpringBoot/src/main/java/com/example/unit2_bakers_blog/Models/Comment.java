@@ -54,4 +54,14 @@ public class Comment {
     public void setRecipeId(int recipeId) {
         this.recipeId = recipeId;
     }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Recipe recipe;
+
+    public Recipe getRecipe() {
+        return recipe;
+    }
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+    }
 }

@@ -1,0 +1,34 @@
+{
+        id: 4,
+        title: "Healthy Berry Streusel Bars",
+        mainImage: "https://sallysbakingaddiction.com/wp-content/uploads/2014/07/healthy-berry-oat-streusel-bars-3.jpg",
+        ingredients: [
+            "1 and 1/2 Tablespoons (12g) cornstarch",
+            "1 and 1/2 Tablespoons (23ml) water",
+            "2 cups (about 300g) fresh or frozen mixed berries (do not thaw & see note)",
+            "1/4 cup (60ml) pure maple syrup",
+            "1 Tablespoon (11g) coconut sugar, brown sugar, or granulated sugar",
+            "2 and 1/2 cups (213g) old-fashioned whole rolled oats or quick oats",
+            "1/2 teaspoon ground cinnamon",
+            "1 cup (255g) almond butter",
+            "1/4 cup (60ml) pure maple syrup",
+            "1/4 cup (60g) unsweetened applesauce",
+            "1/4 cup (56g) coconut oil, melted (or use melted butter)",
+            "For topping: 1/2 cup (64g) sliced or chopped almonds and 1 extra Tablespoon oats"
+        ],
+        utensils: [
+            "8x8-inch pan",
+            "Spatula or wooden spoon",
+            "Fork"
+        ],
+        steps: [
+            "Set an oven rack to the middle position and preheat the oven to 350 degrees F (175 degrees C). Lightly grease an 8x8-inch baking dish.",
+        ],
+        comments: [
+            "So glad there's a gluten free recipe here.",
+        ],
+        tags: [
+            "Gluten-Free",
+            "Fruity"
+        ]
+    }, 

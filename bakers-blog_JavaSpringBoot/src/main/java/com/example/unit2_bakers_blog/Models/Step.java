@@ -12,7 +12,7 @@ public class Step {
 
     private String stepDesc;
     private int order;
-    private int postId;
+    private int recipeId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Recipe recipe;
@@ -20,10 +20,10 @@ public class Step {
     public Step() {
     }
 
-    public Step(String stepDesc, int order, int postId) {
+    public Step(String stepDesc, int order, int recipeId) {
         this.stepDesc = stepDesc;
         this.order = order;
-        this.postId = postId;
+        this.recipeId = recipeId;
     }
 
     public int getId() {
@@ -50,11 +50,11 @@ public class Step {
         this.order = order;
     }
 
-    public int getPostId() {
-        return postId;
+    public int getRecipeId() {
+        return recipeId;
     }
 
-    public void setPostId(int postId) {
-        this.postId = postId;
+    public void setRecipeId(int recipeId) {
+        this.recipeId = recipeId;
     }
 }

@@ -67,9 +67,7 @@ public class RecipeController {
         List<Utensil> utensils = recipe.getUtensils()
                 .stream()
                 .map(utensil -> {
-
                     System.out.println("UTENSIL RECEIVED: " + utensil.getUtensil());
-
                     return utensilRepository.findByUtensil(utensil.getUtensil())
                             .orElseGet(() -> {
                                 System.out.println("CREATING NEW UTENSIL: " + utensil.getUtensil());

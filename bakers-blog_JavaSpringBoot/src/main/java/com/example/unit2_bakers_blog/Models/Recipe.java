@@ -19,10 +19,12 @@ public class Recipe {
 
     public Recipe() { }
 
-    public Recipe(String title, List<Utensil> utensils, List<Step> steps, List<Ingredient> ingredients, List<Tag> tags, List<Image> images, int userId) {
+    public Recipe(String title, String mainImageUrl, List<Utensil> utensils, List<Step> steps, List<Ingredient> ingredients, List<Tag> tags, List<Image> images, int userId) {
         this.title = title;
+        this.mainImageUrl = mainImageUrl;
         this.utensils = utensils;
         this.steps = steps;
+        this.ingredients = ingredients;
         this.tags = tags;
         this.images = images;
         this.userId = userId;
@@ -148,4 +150,9 @@ public class Recipe {
     public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
+
+    // Comments
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe", orphanRemoval = true)
+    private List<Comment> comments;
+
 }

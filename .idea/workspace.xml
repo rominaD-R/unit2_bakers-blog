@@ -8,18 +8,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1612f39-b322-4ff8-9b9d-da9f81bc0de2" name="Changes" comment="trying to connect React front end">
-      <change afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Repository/IngredientRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Repository/UtensilRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Repository/TagRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Controller/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Controller/RecipeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Image.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Ingredient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Recipe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Step.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Step.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Tag.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Utensil.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Utensil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,30 +73,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;Spring Boot.Unit2BakersBlogApplication.executor&quot;: &quot;Run&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;hashingPasswords&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/rdiazrivero/LaunchCode/unit-2/Final-project/unit2_bakers-blog&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;python.packages.toolwindow.project.migrated.to.right.top.v2&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.Unit2BakersBlogApplication.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "jpa-config__02",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/rdiazrivero/LaunchCode/unit-2/Final-project/unit2_bakers-blog",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bakers-blog_JavaSpringBoot" />
