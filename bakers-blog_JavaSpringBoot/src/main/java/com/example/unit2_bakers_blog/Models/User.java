@@ -2,6 +2,8 @@ package com.example.unit2_bakers_blog.Models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class User {
     @Id
@@ -82,6 +84,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @ManyToMany
+    private List<Recipe> savedRecipes;
+
+    public List<Recipe> getSavedRecipes() {
+        return savedRecipes;
     }
 
 }

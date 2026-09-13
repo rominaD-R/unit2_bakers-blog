@@ -13,20 +13,18 @@ public class Recipe {
     private int id;
 
     private String title;
-    private String tags;
     private String mainImageUrl;
-    private String images;
     private int userId;
     private java.sql.Timestamp createdAt;
 
     public Recipe() { }
 
-    public Recipe(String title, List<Utensil> utensils, List<Step> steps, String tags, int userId) {
+    public Recipe(String title, List<Utensil> utensils, List<Step> steps, List<Ingredient> ingredients, List<Tag> tags, List<Image> images, int userId) {
         this.title = title;
         this.utensils = utensils;
         this.steps = steps;
         this.tags = tags;
-       // this.images = images;
+        this.images = images;
         this.userId = userId;
         this.createdAt = new java.sql.Timestamp(System.currentTimeMillis());
     }
@@ -48,22 +46,6 @@ public class Recipe {
         this.title = title;
     }
 
-    public String getTags() {
-        return tags;
-    }
-
-    public void setTags(String tags) {
-        this.tags = tags;
-    }
-
-//    public String getImages() {
-//        return images;
-//    }
-//
-//    public void setImages(String images) {
-//        this.images = images;
-//    }
-//
     public int getUserId() {
         return userId;
     }
@@ -85,22 +67,22 @@ public class Recipe {
     // for each of these if you want to have a more normalized database structure.
 
     // INGREDIENTS
-//    @ManyToMany
-//    @JoinTable(
-//            name = "recipe_ingredients",
-//            joinColumns = @JoinColumn(name = "recipe_id"),
-//            inverseJoinColumns = @JoinColumn(name = "ingredient_id")
-//    )
-//    private List<Ingredient> ingredients;
-//
-//    public List<Ingredient> getIngredients() {
-//        return ingredients;
-//    }
-//
-//    public void setIngredients(List<Ingredient> ingredients) {
-//        this.ingredients = ingredients;
-//    }
-//
+    @ManyToMany
+    @JoinTable(
+            name = "recipe_ingredients",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "ingredient_id")
+    )
+    private List<Ingredient> ingredients;
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
     // UTENSILS
     @ManyToMany
     @JoinTable(
@@ -126,6 +108,10 @@ public class Recipe {
         return steps;
     }
 
+    public Step getStepX(int order) {
+        return steps.stream().filter(step -> step.getOrder() == order).findFirst().orElse(null);
+    }
+
     public void setSteps(List<Step> steps) {
         this.steps = steps;
     }
@@ -134,4 +120,32 @@ public class Recipe {
         steps.add(step);
     }
 
+    // IMAGES
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe", orphanRemoval = true)
+    private List<Image> images;
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+
+    // TAGS
+    @ManyToMany
+    @JoinTable(
+            name = "recipe_tags",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private List<Tag> tags;
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
 }

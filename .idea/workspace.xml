@@ -7,7 +7,20 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1612f39-b322-4ff8-9b9d-da9f81bc0de2" name="Changes" comment="trying to connect React front end" />
+    <list default="true" id="f1612f39-b322-4ff8-9b9d-da9f81bc0de2" name="Changes" comment="trying to connect React front end">
+      <change afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Repository/IngredientRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Repository/UtensilRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Controller/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Controller/RecipeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Ingredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Recipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Step.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Step.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Tag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Utensil.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Utensil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,8 +40,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -190,5 +203,15 @@
     <MESSAGE value="Working on User and Comments controllers" />
     <MESSAGE value="trying to connect React front end" />
     <option name="LAST_COMMIT_MESSAGE" value="trying to connect React front end" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.hibernate.TransientPropertyValueException" package="org.hibernate" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
