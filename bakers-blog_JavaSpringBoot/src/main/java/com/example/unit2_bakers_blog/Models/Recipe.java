@@ -64,6 +64,14 @@ public class Recipe {
         this.createdAt = createdAt;
     }
 
+    public String getMainImageUrl() {
+        return mainImageUrl;
+    }
+
+    public void setMainImageUrl(String mainImageUrl) {
+        this.mainImageUrl = mainImageUrl;
+    }
+
     // List of Ingredients, Utensils, Steps, Tags, and Images can be stored as JSON
     // or comma-separated values in the database. You can also create separate entities
     // for each of these if you want to have a more normalized database structure.
@@ -103,7 +111,8 @@ public class Recipe {
     }
 
     // STEPS
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.EAGER)
+    @JoinColumn(name = "recipestepid", nullable = false, updatable = false)
     private List<Step> steps;
 
     public List<Step> getSteps() {
@@ -154,5 +163,10 @@ public class Recipe {
     // Comments
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe", orphanRemoval = true)
     private List<Comment> comments;
+
+    // OWNER (BakerUser)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownerid", referencedColumnName = "id")
+    private BakerUser owner;
 
 }

@@ -93,6 +93,24 @@ public class User {
         return savedRecipes;
     }
 
-    
+    public void setSavedRecipes(List<Recipe> savedRecipes) {
+        this.savedRecipes = savedRecipes;
+    }
+
+    public void saveRecipe(Recipe recipe) {
+        savedRecipes.add(recipe);
+    }
+
+    public java.sql.Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(java.sql.Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    // Comments
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
+    private List<Comment> comments;
 
 }

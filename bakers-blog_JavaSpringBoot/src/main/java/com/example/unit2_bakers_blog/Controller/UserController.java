@@ -48,7 +48,7 @@ public class UserController {
     }
 
     @GetMapping("/user/{id}")
-    public User getItem(@PathVariable int id) {
+    public User getItem(@PathVariable(name = "id") int id) {
         return userRepository.findById(id).orElse(null);
     }
 
@@ -67,7 +67,7 @@ public class UserController {
     }
 
     @DeleteMapping("/user/{id}")
-    public void deleteItem(@PathVariable int id) {
+    public void deleteItem(@PathVariable(name = "id") int id) {
         userRepository.deleteById(id);
     }
 }

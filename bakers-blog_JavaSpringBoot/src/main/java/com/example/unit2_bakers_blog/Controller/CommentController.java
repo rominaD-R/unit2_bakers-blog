@@ -38,7 +38,7 @@ public class CommentController {
     @PostMapping("form")
     public String handleForm(Comment comment){
         commentRepository.save(comment);
-        return "User " + comment.getUserId() + " said:  "+ comment.getContent();
+        return "User " + comment.getUser().getUsername() + " said:  "+ comment.getContent();
     }
 
     @GetMapping("/comment/{id}")

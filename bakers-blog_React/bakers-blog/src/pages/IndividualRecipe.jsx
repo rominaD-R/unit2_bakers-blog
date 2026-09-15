@@ -22,10 +22,10 @@ export default function IndividualRecipe() {
     const [commentData, setCommentData] = useState([...currentRecipe.comments]);
 
     const testAPI = useCallback(async () => {
-        const url = "http://localhost:8080/recipes/recipe/16";
+        const url = "http://localhost:8080/recipes/recipe/1";
         try {
             
-            const data = await fetch("http://localhost:8080/recipes/recipe/16")
+            const data = await fetch("http://localhost:8080/recipes/recipe/1")
                 .then((res) => res.json())
             console.log(data);
             setTestData((data) ? data : {});
@@ -72,7 +72,7 @@ export default function IndividualRecipe() {
             <div>
                 <h4>Steps</h4>
                 <ol>
-                   {/* {currentRecipe.steps.map((item) => <li>{item}</li>)} */}
+                   {currentRecipe.steps.map((item) => <li>{item}</li>)}
                 </ol>
             </div>
             {/* Transformed Comment Section from here into a separate component */}

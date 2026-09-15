@@ -1,5 +1,6 @@
 package com.example.unit2_bakers_blog.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -45,7 +46,8 @@ public class Tag {
         this.description = description;
     }
 
-    @ManyToMany(mappedBy = "ingredients")
+    @ManyToMany(mappedBy = "tags")
+    @JsonIgnore
     private List<Recipe> recipes;
 
     public List<Recipe> getRecipes() {

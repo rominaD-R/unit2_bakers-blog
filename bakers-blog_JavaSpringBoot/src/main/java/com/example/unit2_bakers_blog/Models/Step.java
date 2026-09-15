@@ -1,29 +1,27 @@
 package com.example.unit2_bakers_blog.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
-// @Table(name = "recipe_steps")
 public class Step {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(columnDefinition = "TEXT")
     private String stepDesc;
-    private int order;
-    private int recipeId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Recipe recipe;
+    private int orderNum;
+    private int rId;
 
     public Step() {
     }
 
-    public Step(String stepDesc, int order, int recipeId) {
+    public Step(String stepDesc, int orderNum, int rId) {
         this.stepDesc = stepDesc;
-        this.order = order;
-        this.recipeId = recipeId;
+        this.orderNum = orderNum;
+        this.rId = rId;
     }
 
     public int getId() {
@@ -43,18 +41,30 @@ public class Step {
     }
 
     public int getOrder() {
-        return order;
+        return orderNum;
     }
 
-    public void setOrder(int order) {
-        this.order = order;
+    public void setOrder(int orderNum) {
+        this.orderNum = orderNum;
     }
 
     public int getRecipeId() {
-        return recipeId;
+        return rId;
     }
 
-    public void setRecipeId(int recipeId) {
-        this.recipeId = recipeId;
+    public void setRecipeId(int rId) {
+        this.rId = rId;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "recipeid", insertable = false, updatable = false)
+    @JsonIgnore
+    private Recipe recipe;
+
+    public Recipe getRecipe() {
+        return recipe;
+    }
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
     }
 }

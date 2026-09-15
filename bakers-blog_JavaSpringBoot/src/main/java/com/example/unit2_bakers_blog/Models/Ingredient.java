@@ -1,5 +1,6 @@
 package com.example.unit2_bakers_blog.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -47,5 +48,6 @@ public class Ingredient {
 //    }
 
     @ManyToMany(mappedBy = "ingredients")
+    @JsonIgnore
     private List<Recipe> recipes;
 }
