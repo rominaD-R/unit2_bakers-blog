@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @PostMapping("form")
-    public String handleForm(User user){
+    public String handleForm(User user) {
         user.setRole("basic");
         userRepository.save(user);
         return "Hello : "+ user.getfName() + " ! Your email is "+ user.getEmail();
@@ -57,6 +57,7 @@ public class UserController {
     @PostMapping()
     public User addItem(@RequestBody User user) {
         user.setRole("basic");
+        System.out.printf("%s: %s\n", user.getfName(), user.getlName());
         user.setPassword(encoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
