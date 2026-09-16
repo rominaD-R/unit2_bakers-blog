@@ -1,11 +1,7 @@
 package com.example.unit2_bakers_blog.Controller;
 
-import com.example.unit2_bakers_blog.Models.Recipe;
-import com.example.unit2_bakers_blog.Models.Step;
-import com.example.unit2_bakers_blog.Models.User;
-import com.example.unit2_bakers_blog.Models.Utensil;
-import com.example.unit2_bakers_blog.Repository.RecipeRepository;
-import com.example.unit2_bakers_blog.Repository.UtensilRepository;
+import com.example.unit2_bakers_blog.Models.*;
+import com.example.unit2_bakers_blog.Repository.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,10 +13,18 @@ public class RecipeController {
 
     private final RecipeRepository recipeRepository;
     private final UtensilRepository utensilRepository;
+    private final IngredientRepository ingredientRepository;
+    private final StepRepository stepRepository;
+    private final ImageRepository imageRepository;
+    private final TagRepository tagRepository;
 
-    public RecipeController(RecipeRepository recipeRepository,  UtensilRepository utensilRepository) {
+    public RecipeController(RecipeRepository recipeRepository,  UtensilRepository utensilRepository,  IngredientRepository ingredientRepository, StepRepository stepRepository, ImageRepository imageRepository, TagRepository tagRepository) {
         this.recipeRepository = recipeRepository;
         this.utensilRepository = utensilRepository;
+        this.ingredientRepository = ingredientRepository;
+        this.stepRepository = stepRepository;
+        this.imageRepository = imageRepository;
+        this.tagRepository = tagRepository;
     }
 
     @GetMapping("/all")
@@ -67,9 +71,7 @@ public class RecipeController {
         List<Utensil> utensils = recipe.getUtensils()
                 .stream()
                 .map(utensil -> {
-
                     System.out.println("UTENSIL RECEIVED: " + utensil.getUtensil());
-
                     return utensilRepository.findByUtensil(utensil.getUtensil())
                             .orElseGet(() -> {
                                 System.out.println("CREATING NEW UTENSIL: " + utensil.getUtensil());
@@ -80,19 +82,66 @@ public class RecipeController {
 
         System.out.println("Setting utensils:  ");
         recipe.setUtensils(utensils);
-
         System.out.println("We have set the utensils!!");
+
+        List<Ingredient> ingredients = recipe.getIngredients()
+                .stream()
+                .map(ingredient -> {
+                    return ingredientRepository.findByIngredient(ingredient.getIngredient())
+                            .orElseGet(() -> {
+                                return ingredientRepository.save(ingredient);
+                            });
+                })
+                .toList();
+        recipe.setIngredients(ingredients);
+
+        if (recipe.getTags() != null) {
+            List<Tag> tags = recipe.getTags()
+                    .stream()
+                    .map(tag -> {
+                        System.out.println("TAG RECEIVED: " + tag.getTag());
+                        return tagRepository.findByTag(tag.getTag())
+                                .orElseGet(() -> {
+                                    return tagRepository.save(tag);
+                                });
+                    })
+                    .toList();
+            recipe.setTags(tags);
+        }
+
+        List<Step> steps = recipe.getSteps()
+                .stream()
+                .map(step -> {
+                    step.setRecipe(recipe);
+                    return step;
+                })
+                .toList();
+
+        recipe.setSteps(steps);
+
+        if (recipe.getImages() != null) {
+            List<Image> images = recipe.getImages()
+                    .stream()
+                    .map(image -> {
+                        image.setRecipe(recipe);
+                        return image;
+                    })
+                    .toList();
+
+            recipe.setImages(images);
+        }
+
         return recipeRepository.save(recipe);
     }
 
     @PutMapping("/recipes/{id}")
-    public Recipe updateItem(@PathVariable int id, @RequestBody Recipe recipe) {
+    public Recipe updateItem(@PathVariable(name = "id") int id, @RequestBody Recipe recipe) {
         recipe.setId(id);
         return recipeRepository.save(recipe);
     }
 
     @DeleteMapping("/recipes/{id}")
-    public void deleteItem(@PathVariable int id) {
+    public void deleteItem(@PathVariable(name = "id") int id) {
         recipeRepository.deleteById(id);
     }
 }

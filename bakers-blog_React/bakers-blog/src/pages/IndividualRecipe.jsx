@@ -22,10 +22,10 @@ export default function IndividualRecipe() {
     const [commentData, setCommentData] = useState([...currentRecipe.comments]);
 
     const testAPI = useCallback(async () => {
-        const url = "http://localhost:8080/recipes/recipe/16";
+        const url = "http://localhost:8080/recipes/recipe/3";
         try {
             
-            const data = await fetch("http://localhost:8080/recipes/recipe/16")
+            const data = await fetch("http://localhost:8080/recipes/recipe/3")
                 .then((res) => res.json())
             console.log(data);
             setTestData((data) ? data : {});
@@ -52,27 +52,32 @@ export default function IndividualRecipe() {
         <div className='text-cont individual-recipe-page'>
             <h2>{testData.title}</h2>
             <FontAwesomeIcon icon={faBookmark} />
-            {/* <div className='main-img'>
-                <img src={currentRecipe.mainImage} alt={currentRecipe.title} />
+            <div className='main-img'>
+                <img src={testData.mainImageUrl} alt={currentRecipe.title} />
             </div>
              <div className='two-col'>
                 <div>
                     <h4>Ingredients</h4>
                     <ul>
-                        {currentRecipe.ingredients.map((item) => <li>{item}</li>)}
+                        {testData.ingredients ? testData.ingredients.map((item) => <li>{item.ingredient}</li>) : "Error retrieving ingredient"}
                     </ul>
                 </div>
                 <div>
                     <h4>Utensils</h4>
                     <ul>
-                        {currentRecipe.utensils.map((item) => <li>{item}</li>)}
+                        {testData.utensils ? testData.utensils.map((item) => <li>{item.utensil}</li>) : "Error retrieving utensil"}
                     </ul>
                 </div>
-            </div> */}
+            </div>
             <div>
                 <h4>Steps</h4>
                 <ol>
-                   {/* {currentRecipe.steps.map((item) => <li>{item}</li>)} */}
+                   {testData.steps ? testData.steps.map((item) => <li>{item.stepDesc}</li>) : "Error retrieving step"}
+                </ol>
+            </div>
+            <div>
+                <ol>
+                   {testData.images ? testData.images.map((item) => <img src={item.imageUrl} />) : "Error retrieving step"}
                 </ol>
             </div>
             {/* Transformed Comment Section from here into a separate component */}

@@ -1,5 +1,6 @@
 package com.example.unit2_bakers_blog.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public class Ingredient {
     private int id;
 
     private String ingredient;
-    private int recipeId;
+    // private int recipeId;
 
     public Ingredient() {
     }
@@ -38,14 +39,15 @@ public class Ingredient {
         this.ingredient = ingredient;
     }
 
-    public int getRecipeId() {
-        return recipeId;
-    }
-
-    public void setRecipeId(int recipeId) {
-        this.recipeId = recipeId;
-    }
+//    public int getRecipeId() {
+//        return recipeId;
+//    }
+//
+//    public void setRecipeId(int recipeId) {
+//        this.recipeId = recipeId;
+//    }
 
     @ManyToMany(mappedBy = "ingredients")
+    @JsonIgnore
     private List<Recipe> recipes;
 }

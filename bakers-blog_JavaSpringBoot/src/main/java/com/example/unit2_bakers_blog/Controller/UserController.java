@@ -41,14 +41,14 @@ public class UserController {
     }
 
     @PostMapping("form")
-    public String handleForm(User user){
+    public String handleForm(User user) {
         user.setRole("basic");
         userRepository.save(user);
         return "Hello : "+ user.getfName() + " ! Your email is "+ user.getEmail();
     }
 
     @GetMapping("/user/{id}")
-    public User getItem(@PathVariable int id) {
+    public User getItem(@PathVariable(name = "id") int id) {
         return userRepository.findById(id).orElse(null);
     }
 
@@ -57,6 +57,7 @@ public class UserController {
     @PostMapping()
     public User addItem(@RequestBody User user) {
         user.setRole("basic");
+        System.out.printf("%s: %s\n", user.getfName(), user.getlName());
         user.setPassword(encoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
@@ -67,7 +68,7 @@ public class UserController {
     }
 
     @DeleteMapping("/user/{id}")
-    public void deleteItem(@PathVariable int id) {
+    public void deleteItem(@PathVariable(name = "id") int id) {
         userRepository.deleteById(id);
     }
 }
