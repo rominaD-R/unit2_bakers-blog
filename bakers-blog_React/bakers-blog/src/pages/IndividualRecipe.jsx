@@ -21,11 +21,10 @@ export default function IndividualRecipe() {
 
     const [commentData, setCommentData] = useState([...currentRecipe.comments]);
 
+    const url = `http://localhost:8080/recipes/recipe/${id}`;
     const testAPI = useCallback(async () => {
-        const url = "http://localhost:8080/recipes/recipe/3";
         try {
-            
-            const data = await fetch("http://localhost:8080/recipes/recipe/3")
+            const data = await fetch(url)
                 .then((res) => res.json())
             console.log(data);
             setTestData((data) ? data : {});
@@ -34,6 +33,8 @@ export default function IndividualRecipe() {
         }
     }, [setTestData]);
 
+    console.log(url);
+    
     // FUNCTION TO ADD COMMENT ON INDIVIDUAL RECIPES
     const addComment = (e) => {
         e.preventDefault();

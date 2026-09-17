@@ -9,7 +9,7 @@ export default function RecipeCard( { recipe } ) {
     <div className='recipe-card'>
       <Link className='link-recipe' to={`/recipe/${recipe.id}`}>
         <div className='recipe-card-img'>
-            <img src={mainImageDummy} alt={recipe.title} />
+            <img src={recipe.mainImageUrl} alt={recipe.title} />
         </div>
       </Link>
       <div className='recipe-card-text'>

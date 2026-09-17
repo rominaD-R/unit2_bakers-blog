@@ -4,6 +4,7 @@ import { Routes, Route, Link } from 'react-router';
 export default function LogSignIn() {
 
     const [login, setLogin] = useState(true);
+    const [token, setToken] = useState("na");
 
     // Sign Up for account (WORK ON HASHING)
     const makeAccount = async (e) => {
@@ -34,6 +35,27 @@ export default function LogSignIn() {
         e.preventDefault();
     }
 
+    const loginUser = async (e) => {
+        e.preventDefault();
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        console.log("Login clicked!!")
+        try {
+            await fetch("http://localhost:8080/auth/login/", {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    username: username,
+                    password: password
+                }),
+            })
+        } catch(error) {
+            console.error(error.message);
+            console.log("ERROR!!");
+        }
+        console.log(token);
+    }
+
     return (
         <div className='text-cont'>
             {login ? <div>
@@ -43,7 +65,7 @@ export default function LogSignIn() {
                     <input id='username' type="text" />
                     <label htmlFor="">Password: </label>
                     <input id='password' type="password" />
-                    <input type="submit" value="Log In" />
+                    <button onClick={loginUser}>Login</button>
                 </form>
             </div> : <div>
                 <h4>Sign Up for an Account</h4>

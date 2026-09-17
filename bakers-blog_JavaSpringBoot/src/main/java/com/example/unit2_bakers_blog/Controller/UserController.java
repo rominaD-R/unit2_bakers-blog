@@ -3,6 +3,7 @@ package com.example.unit2_bakers_blog.Controller;
 import com.example.unit2_bakers_blog.Models.Recipe;
 import com.example.unit2_bakers_blog.Models.User;
 import com.example.unit2_bakers_blog.Repository.UserRepository;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,6 +20,13 @@ public class UserController {
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
+    @GetMapping("/current")
+    @PreAuthorize("isAuthenticated()")
+    public String gerUsername(User user) {
+        return user.getUsername();
+    }
+
 
     @GetMapping("/all")
     public List<User> getAllItems() {
