@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useParams, Link } from 'react-router';
 import RecipeCard from '../components/RecipeCard';
 import { recipeMockData } from '../data/recipes'
+import { useStateContext } from '../ContextProvider'
 
 function Types() {
 

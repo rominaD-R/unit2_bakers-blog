@@ -14,9 +14,6 @@ function Home() {
     const getData = useCallback(async () => {
         const url = "http://localhost:8080/recipes/all";
         try {
-            // const result = await response.json();
-            // console.log(result);
-            // setRecipeData(result);   
             const data = await fetch("http://localhost:8080/recipes/all").then((res) => res.json());
             console.log(data);
             setRecipeData(Array.isArray(data) ? data : []);

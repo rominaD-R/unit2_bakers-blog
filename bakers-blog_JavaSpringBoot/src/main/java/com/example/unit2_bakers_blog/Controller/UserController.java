@@ -2,11 +2,13 @@ package com.example.unit2_bakers_blog.Controller;
 
 import com.example.unit2_bakers_blog.Models.Recipe;
 import com.example.unit2_bakers_blog.Models.User;
+import com.example.unit2_bakers_blog.Repository.RecipeRepository;
 import com.example.unit2_bakers_blog.Repository.UserRepository;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,15 +18,20 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
     private final UserRepository userRepository;
+    private final RecipeRepository recipeRepository;
 
-    public UserController(UserRepository userRepository) {
+    public UserController(UserRepository userRepository, RecipeRepository recipeRepository) {
         this.userRepository = userRepository;
+        this.recipeRepository = recipeRepository;
     }
 
     @GetMapping("/current")
     @PreAuthorize("isAuthenticated()")
-    public String gerUsername(User user) {
-        return user.getUsername();
+    public User getUserInfo(Authentication authentication) {
+        String username = authentication.getName();
+
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
     }
 
 
@@ -60,6 +67,11 @@ public class UserController {
         return userRepository.findById(id).orElse(null);
     }
 
+    @GetMapping("/user/{id}/savedrecipes")
+    public List<Recipe> getSavedRecipes(@PathVariable(name = "id") int id) {
+        return userRepository.findById(id).orElse(null).getSavedRecipes();
+    }
+
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(11);
 
     @PostMapping()
@@ -71,7 +83,13 @@ public class UserController {
     }
 
     @PutMapping("/user/{id}")
-    public User updateItem(@PathVariable int id, @RequestBody User user) {
+    public User updateItem(@PathVariable(name = "id") int id, @RequestBody User user) {
+        return userRepository.save(user);
+    }
+
+    @PutMapping("/user/{id}/recipe/{rid}")
+    public User saveRecipe(@PathVariable(name = "id") int id, @PathVariable(name = "rid") int rid, @RequestBody User user) {
+        user.saveRecipe(recipeRepository.findById(rid).orElse(null));
         return userRepository.save(user);
     }
 
@@ -79,4 +97,5 @@ public class UserController {
     public void deleteItem(@PathVariable(name = "id") int id) {
         userRepository.deleteById(id);
     }
+
 }

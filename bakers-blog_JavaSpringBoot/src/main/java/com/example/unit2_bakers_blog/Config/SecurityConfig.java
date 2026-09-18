@@ -1,4 +1,4 @@
-//package com.example.unit2_bakers_blog;
+//package com.example.unit2_bakers_blog.Config;
 //
 //import org.springframework.context.annotation.Configuration;
 //import org.springframework.web.servlet.config.annotation.EnableWebMvc;
