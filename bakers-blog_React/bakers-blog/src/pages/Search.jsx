@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion, MotionConfig } from "motion/react"
 import RecipeCard from '../components/RecipeCard';
+import { useStateContext } from '../ContextProvider'
 import './Search.css'
 import { recipeMockData } from '../data/recipes'
 
@@ -8,6 +9,7 @@ function Search() {
 
     const [results, setResults] = useState([...recipeMockData]);
     const [search, setSearch] = useState('');
+    const { token, setToken, user, setUser } = useStateContext();
 
     const returnResults = (e) => {
         let { value } = e.target;

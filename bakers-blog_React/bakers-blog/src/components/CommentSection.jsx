@@ -1,6 +1,10 @@
 import React from 'react'
+import { useStateContext } from '../ContextProvider'
 
 export default function CommentSection( { comments, onAdd } ) {
+
+  const { token, setToken, user, setUser } = useStateContext();
+  
   return (
     <div className='comments-section'>
         <hr />

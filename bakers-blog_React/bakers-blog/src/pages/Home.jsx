@@ -6,19 +6,25 @@ import { recipeMockData } from '../data/recipes'
 function Home() {
 
     const allTime = recipeMockData.slice(0, 4);         // All time Favorites Recipes which are the first 4 of the original list
-    const newRecipes = recipeMockData.slice(4, 8);      // "New" Recipes which are the last 4 of the original list
+    const heck = recipeMockData.slice(4, 8);      // "New" Recipes which are the last 4 of the original list
 
     const [recipeData, setRecipeData] = useState([]);
+    const [newRecipes, setNewRecipes] = useState([]);
 
     const getData = useCallback(async () => {
         const url = "http://localhost:8080/recipes/all";
         try {
-            // const result = await response.json();
-            // console.log(result);
-            // setRecipeData(result);   
             const data = await fetch("http://localhost:8080/recipes/all").then((res) => res.json());
             console.log(data);
             setRecipeData(Array.isArray(data) ? data : []);
+            
+            if (Array.isArray(data)) {
+                let reversedArray = [...data];
+                reversedArray = reversedArray.reverse();
+                setNewRecipes(reversedArray);
+            } else {
+                setNewRecipes(data);
+            }
         } catch (error) {
             console.error(error.message);
         }
@@ -35,7 +41,8 @@ function Home() {
             const result = await response.json();
             console.log(result);
             setRecipeData(result);
-
+            let reversedArray = result.reverse();
+            setNewRecipes(reversedArray);
         } catch (error) {
             console.error(error.message);
         }

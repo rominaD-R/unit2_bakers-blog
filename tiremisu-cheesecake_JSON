@@ -1,0 +1,85 @@
+{
+        "title": "Tiramisu Cheesecake",
+        "mainImageUrl": "https://www.allrecipes.com/thmb/C3aI3bzyEP1gTsFbQM8bsDaeKXc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/514088-tiramisu-cheesecake-chibi-chef-1x1-1-457fe39663864f40963ce7d1d354b57d.jpg",
+        "ingredients": [
+            {
+                "ingredient": "1 (12 ounce) package ladyfingers"
+            }, {
+                "ingredient": "¼ cup unsalted butter, melted"
+            }, {
+                "ingredient": "2 tablespoons coffee-flavored liqueur"
+            }, {
+                "ingredient": "3 (8 ounce) packages cream cheese, softened"
+            }, {
+                "ingredient": "1 (8 ounce) container mascarpone cheese, softened"
+            }, {
+                "ingredient": "1 cup white sugar"
+            }, {
+                "ingredient": "2 tablespoons coffee-flavored liqueur"
+            }, {
+                "ingredient": "¼ cup all-purpose flour"
+            }, {
+                "ingredient": "2 large eggs"
+            }, {
+                "ingredient": "(Optional) 1 teaspoon heavy cream, or more as needed"
+            }, {
+                "ingredient": "¼ ounce semisweet chocolate"
+            } 
+        ],
+        "utensils": [
+            {
+                "utensil": "9-inch springform pan"
+            }, {
+                "utensil": "Electric mixer or whisk"
+            }
+            
+        ],
+        "steps": [
+            {
+                "stepDesc": "Preheat the oven to 350 degrees F (175 degrees C). Place a pan of water on the lowest oven rack.",
+                "order": 1,
+                "orderNum": 1
+
+            }, {
+                "stepDesc": "To make the crust: Crush ladyfingers into fine crumbs. Place crumbs into a bowl with melted butter and coffee-flavored liqueur; stir until evenly combined. Press into the bottom of a 9-inch springform pan.",
+                "order": 2,
+                "orderNum": 2
+            }, {
+                "stepDesc": "To make the filling: Beat cream cheese, mascarpone cheese, and sugar in a large bowl with an electric mixer until very smooth, 2 to 3 minutes. Scrape down the sides of the bowl and mix in coffee-flavored liqueur. Add flour and eggs; mix on low speed just until smooth. If batter seems too thick, mix in heavy cream. Pour batter over the crust.",
+                "order": 3,
+                "orderNum": 3
+            }, {
+                "stepDesc": "Bake on the center rack of the preheated oven until just set, 40 to 45 minutes.",
+                "order": 4,
+                "orderNum": 4
+            }, {
+                "stepDesc": "Open the oven door, turn off the heat, and leave cheesecake to cool on the center rack for 20 minutes.",
+                "order": 5,
+                "orderNum": 5
+            }, {
+                "stepDesc": "Remove from the oven, transfer to a wire rack to cool completely, about 30 more minutes.",
+                "order": 6,
+                "orderNum": 6
+            }, {
+                "stepDesc": "Refrigerate for at least 3 hours, or overnight.",
+                "order": 7,
+                "orderNum": 7
+            }, {
+                "stepDesc": "Just before serving, grate semisweet chocolate over the top.",
+                "order": 8,
+                "orderNum": 8
+            }
+        ],
+        "images": [
+            {
+                "imageUrl": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F9117931.jpg&q=60&c=sc&poi=auto&orient=true&h=512"
+            }, {
+                "imageUrl": "https://juliemarieeats.com/wp-content/uploads/2023/11/Julie-Marie-Eats-Tiramisu-Cheesecake-2-2-scaled.jpg"
+            }
+        ]
+        "tags": [
+            {
+                "tag": "Coffee"
+            }, 
+        ]
+}

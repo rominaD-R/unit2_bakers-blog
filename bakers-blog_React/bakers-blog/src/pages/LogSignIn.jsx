@@ -1,9 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Routes, Route, Link } from 'react-router';
+import { useStateContext } from '../ContextProvider'
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function LogSignIn() {
 
     const [login, setLogin] = useState(true);
+    const [token2, setToken2] = useState("");
+    const { setToken, token } = useStateContext();
+
+    const navigate = useNavigate();
+
+    let loginToken;
+
+    // setToken(null);
 
     // Sign Up for account (WORK ON HASHING)
     const makeAccount = async (e) => {
@@ -34,6 +44,39 @@ export default function LogSignIn() {
         e.preventDefault();
     }
 
+    const loginUser = async (e) => {
+        e.preventDefault();
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        console.log("Login clicked!!")
+        try {
+            await fetch("http://localhost:8080/auth/login", {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    username: username,
+                    password: password
+                }),
+            }).then(res => res.json())
+            .then(data => {
+                console.log(data.accessToken.token);
+                setToken(data.accessToken.token);
+            })
+            // .then(data => console.log(data.accessToken.token))
+        } catch(error) {
+            console.error(error.message);
+            console.log("ERROR!!");
+        }
+        console.log(token);
+    }
+
+    // Navigate to Account page after user successfully logs in
+    useEffect(() => {
+        if (token && token != "") {
+            navigate('/account');
+        }
+    }, [token, navigate]);
+
     return (
         <div className='text-cont'>
             {login ? <div>
@@ -43,7 +86,7 @@ export default function LogSignIn() {
                     <input id='username' type="text" />
                     <label htmlFor="">Password: </label>
                     <input id='password' type="password" />
-                    <input type="submit" value="Log In" />
+                    <button onClick={loginUser}>Login</button>
                 </form>
             </div> : <div>
                 <h4>Sign Up for an Account</h4>
