@@ -95,6 +95,15 @@ public class UserController {
         return userRepository.save(user);
     }
 
+    @DeleteMapping("/user/{id}/recipe/{rid}")
+    public void deleteRecipe(@PathVariable(name = "id") int id, @PathVariable(name = "rid") int rid) {
+        User user = userRepository.findById(id).orElse(null);
+        System.out.println("Current user is "+ user.getUsername());
+        Recipe recipe = recipeRepository.findById(rid).orElse(null);
+        user.unsaveRecipe(recipe);
+        userRepository.save(user);
+    }
+
     @DeleteMapping("/user/{id}")
     public void deleteItem(@PathVariable(name = "id") int id) {
         userRepository.deleteById(id);

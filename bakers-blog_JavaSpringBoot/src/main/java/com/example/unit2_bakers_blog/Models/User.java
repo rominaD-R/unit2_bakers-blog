@@ -102,6 +102,10 @@ public class User {
         savedRecipes.add(recipe);
     }
 
+    public void unsaveRecipe(Recipe recipe) {
+        savedRecipes.remove(recipe);
+    }
+
     public java.sql.Timestamp getCreatedAt() {
         return createdAt;
     }

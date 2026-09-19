@@ -5,7 +5,6 @@ import CommentSection from '../components/CommentSection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark as fullBookmark } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark as lineBookmark } from '@fortawesome/free-regular-svg-icons';
-// import { faBookmark } from '@fortawesome/free-line-svg-icons';
 import './IndividualRecipe.css'
 import { useStateContext } from '../ContextProvider'
 
@@ -62,10 +61,25 @@ export default function IndividualRecipe() {
         }
     }, [user, recipeId]);
 
+    // Removing/Unsaving a recipe from user's account
     const unsaveRecipe = async () => {
-
+        let url = `http://localhost:8080/users/user/${user.id}/recipe/${recipeId}`;
+        try {
+            console.log("This URL is:  " + url);
+            const data = await fetch(url, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+            })
+            console.log(`Unsaved recipe #${recipeId}`);
+            console.log(data);
+            setSaved(false);
+        } catch (error) {
+            console.log("Error:");
+            console.error(error.message);
+        }
     }
 
+    // Saving a recipe to the user's account
     const saveRecipe = async () => {
         let url = `http://localhost:8080/users/user/${user.id}/recipe/${recipeId}`;
         try {
@@ -75,7 +89,6 @@ export default function IndividualRecipe() {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 
                         username: user.username,
-                        
                         id: user.id,
 
                     })
@@ -114,7 +127,7 @@ export default function IndividualRecipe() {
         <div className='text-cont individual-recipe-page'>
             <h2>{recipeData.title}</h2>
             {saved ? 
-            <button ><FontAwesomeIcon icon={fullBookmark} /></button> :
+            <button onClick={unsaveRecipe}><FontAwesomeIcon icon={fullBookmark} /></button> :
             <button onClick={saveRecipe}><FontAwesomeIcon icon={lineBookmark} /></button>
             }
             <div className='main-img'>
