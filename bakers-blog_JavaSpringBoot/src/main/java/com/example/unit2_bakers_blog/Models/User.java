@@ -20,7 +20,7 @@ public class User {
 
     public User() { }
 
-    public User(String username, String fName, String lName, String password, String email, String role) {
+    public User(String username, String fName, String lName, String password, String email, String role, List<Recipe> savedRecipes) {
         this.username = username;
         this.fName = fName;
         this.lName = lName;
@@ -28,6 +28,7 @@ public class User {
         this.email = email;
         this.role = role;
         this.createdAt = new java.sql.Timestamp(System.currentTimeMillis());
+        this.savedRecipes = savedRecipes;
     }
 
     public int getId() {

@@ -16,7 +16,7 @@ export default function RecipeCard( { recipe } ) {
         <Link className='link-recipe' to={`/recipe/${recipe.id}`}>
           <h4>{recipe.title}</h4>
         </Link>
-        {recipe.tag}  
+        {recipe.tags.map((tag) => <Tag tag={tag.tag} />)}
       </div>
     </div>
   )

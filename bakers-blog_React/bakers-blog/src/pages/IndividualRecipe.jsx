@@ -62,6 +62,34 @@ export default function IndividualRecipe() {
         }
     }, [user, recipeId]);
 
+    const unsaveRecipe = async () => {
+
+    }
+
+    const saveRecipe = async () => {
+        let url = `http://localhost:8080/users/user/${user.id}/recipe/${recipeId}`;
+        try {
+            console.log("This URL is:  " + url);
+                const data = await fetch(url, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        username: user.username,
+                        
+                        id: user.id,
+
+                    })
+                })
+                .then((res) => res.json());
+                console.log("Testing saved recipe:  ")
+                console.log(data);
+                setSaved(true);
+            } catch (error) {
+                console.log("Error:");
+                console.error(error.message);
+            }
+    }
+
     console.log(url);
     
     // FUNCTION TO ADD COMMENT ON INDIVIDUAL RECIPES
@@ -86,8 +114,8 @@ export default function IndividualRecipe() {
         <div className='text-cont individual-recipe-page'>
             <h2>{recipeData.title}</h2>
             {saved ? 
-            <FontAwesomeIcon icon={fullBookmark} /> :
-            <FontAwesomeIcon icon={lineBookmark} />
+            <button ><FontAwesomeIcon icon={fullBookmark} /></button> :
+            <button onClick={saveRecipe}><FontAwesomeIcon icon={lineBookmark} /></button>
             }
             <div className='main-img'>
                 <img src={recipeData.mainImageUrl} alt={currentRecipe.title} />
