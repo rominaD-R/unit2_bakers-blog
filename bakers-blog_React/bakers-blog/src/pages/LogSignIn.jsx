@@ -13,9 +13,7 @@ export default function LogSignIn() {
 
     let loginToken;
 
-    // setToken(null);
-
-    // Sign Up for account (WORK ON HASHING)
+    // Sign Up for account
     const makeAccount = async (e) => {
         e.preventDefault();
         const fName = document.getElementById("fName").value;

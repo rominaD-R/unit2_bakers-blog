@@ -9,8 +9,8 @@ import java.util.List;
 public class BakerUser extends User {
     public BakerUser() { }
 
-    public BakerUser(String username, String fName, String lName, String password, String email, String role, List<Recipe> savedRecipes) {
-        super(username, fName, lName, password, email, role, savedRecipes);
+    public BakerUser(String username, String fName, String lName, String password, String email, String role, List<Recipe> savedRecipes, List<Comment> comments) {
+        super(username, fName, lName, password, email, role, savedRecipes, comments);
         this.setRole("Baker");
     }
 

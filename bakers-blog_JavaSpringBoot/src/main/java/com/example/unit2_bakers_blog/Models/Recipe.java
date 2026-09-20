@@ -19,7 +19,7 @@ public class Recipe {
 
     public Recipe() { }
 
-    public Recipe(String title, String mainImageUrl, List<Utensil> utensils, List<Step> steps, List<Ingredient> ingredients, List<Tag> tags, List<Image> images, int userId) {
+    public Recipe(String title, String mainImageUrl, List<Utensil> utensils, List<Step> steps, List<Ingredient> ingredients, List<Tag> tags, List<Image> images, int userId, List<Comment> comments) {
         this.title = title;
         this.mainImageUrl = mainImageUrl;
         this.utensils = utensils;
@@ -28,6 +28,7 @@ public class Recipe {
         this.tags = tags;
         this.images = images;
         this.userId = userId;
+        this.comments = comments;
         this.createdAt = new java.sql.Timestamp(System.currentTimeMillis());
     }
 
@@ -163,6 +164,22 @@ public class Recipe {
     // Comments
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe", orphanRemoval = true)
     private List<Comment> comments;
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
+    }
+
+    public void deleteComment(Comment comment) {
+        comments.remove(comment);
+    }
 
     // OWNER (BakerUser)
     @ManyToOne(fetch = FetchType.LAZY)

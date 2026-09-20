@@ -16,12 +16,12 @@ function Home() {
         try {
             const data = await fetch("http://localhost:8080/recipes/all").then((res) => res.json());
             console.log(data);
-            setRecipeData(Array.isArray(data) ? data : []);
+            setRecipeData(Array.isArray(data) ? data.slice(0, 4) : []);
             
             if (Array.isArray(data)) {
                 let reversedArray = [...data];
                 reversedArray = reversedArray.reverse();
-                setNewRecipes(reversedArray);
+                setNewRecipes(reversedArray.slice(0, 4));
             } else {
                 setNewRecipes(data);
             }

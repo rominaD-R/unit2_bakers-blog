@@ -22,7 +22,7 @@ export default function IndividualRecipe() {
         }
     );
 
-    const [commentData, setCommentData] = useState([...currentRecipe.comments]);
+    const [commentData, setCommentData] = useState([]);
     const { token, setToken, user, setUser } = useStateContext();
     const [saved, setSaved] = useState(false);
 
@@ -106,11 +106,27 @@ export default function IndividualRecipe() {
     console.log(url);
     
     // FUNCTION TO ADD COMMENT ON INDIVIDUAL RECIPES
-    const addComment = (e) => {
+    const addComment = async (e) => {
         e.preventDefault();
         const currentComment = document.getElementById("commentText").value;
-        setCommentData([...commentData, currentComment]);
-         document.getElementById("commentText").value = '';
+        const url = `http://localhost:8080/comments/add/${recipeId}/${user.id}`;
+        try {
+            console.log("This URL is:  " + url);
+            const data = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    content: currentComment,
+                })
+            })
+            .then((res) => res.json());
+            console.log(data);
+        } catch (error) {
+            console.log("Error:");
+            console.error(error.message);
+        }
+        // setCommentData([...commentData, currentComment]);
+        document.getElementById("commentText").value = '';
     }
 
     
@@ -159,7 +175,7 @@ export default function IndividualRecipe() {
                 </ol>
             </div>
             {/* Transformed Comment Section from here into a separate component */}
-
+            {recipeData.comments ? <CommentSection comments={recipeData.comments} onAdd={addComment} /> : <div>none</div>}
         </div>
     )
 }
