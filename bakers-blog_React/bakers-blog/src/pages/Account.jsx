@@ -2,11 +2,13 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { useStateContext } from '../ContextProvider';
 import RecipeCard from '../components/RecipeCard';
 import CardsRow from '../components/CardsRow';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function Account() {
 
     // const [token, setToken] = useState("");
     const { token, setToken, user, setUser } = useStateContext();
+     const navigate = useNavigate();
 
     const getAccountInfo = useCallback(async () => {
         console.log("Fetching account info:  ");
@@ -61,7 +63,8 @@ export default function Account() {
                     <p>Please sign in or create an account to view your saved recipes and comments. </p>
                     <button onClick={() => {
                         setToken(null);
-                        setUser(null)
+                        setUser(null);
+                        navigate('/login');
                     }}>
                         Log In
                     </button>

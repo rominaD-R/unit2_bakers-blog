@@ -141,11 +141,10 @@ export default function IndividualRecipe() {
 
     return (
         <div className='text-cont individual-recipe-page'>
-            <h2>{recipeData.title}</h2>
-            {saved ? 
-            <button onClick={unsaveRecipe}><FontAwesomeIcon icon={fullBookmark} /></button> :
-            <button onClick={saveRecipe}><FontAwesomeIcon icon={lineBookmark} /></button>
-            }
+            <div>
+                <h2>{recipeData.title}</h2>
+                {saved ? <button onClick={unsaveRecipe}><FontAwesomeIcon icon={fullBookmark} /></button> : <button onClick={saveRecipe}><FontAwesomeIcon icon={lineBookmark} /></button>} 
+            </div>
             <div className='main-img'>
                 <img src={recipeData.mainImageUrl} alt={currentRecipe.title} />
             </div>

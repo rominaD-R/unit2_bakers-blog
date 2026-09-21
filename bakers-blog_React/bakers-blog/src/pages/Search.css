@@ -11,15 +11,32 @@
     margin-top: 30px;
 }
 
+.results {
+    display: flex;
+    flex-direction: row;
+    max-height: 600px;
+}
+
 .search-bottom {
     display: flex;
     margin-top: 24px;
     gap: 24px;
+    overflow-y: scroll;
 }
 
 .filters {
-    width: 500px;
-    background-color: grey;
+    min-width: 300px;
+    background-color: #e7bc84;
+    padding: 5px 10px;
+}
+
+#allergyFilter {
+    border-top: black solid 1px;
+}
+
+#allergyFilter label {
+    display: block;
+    margin-bottom: 6px;
 }
 
 #resultsDiv {
