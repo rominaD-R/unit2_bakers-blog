@@ -2,11 +2,13 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { useStateContext } from '../ContextProvider';
 import RecipeCard from '../components/RecipeCard';
 import CardsRow from '../components/CardsRow';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function Account() {
 
     // const [token, setToken] = useState("");
     const { token, setToken, user, setUser } = useStateContext();
+     const navigate = useNavigate();
 
     const getAccountInfo = useCallback(async () => {
         console.log("Fetching account info:  ");
@@ -23,7 +25,7 @@ export default function Account() {
             console.error(error.message);
             console.log("ERROR!!")
         }
-    }, []);
+    }, [token, setUser]);
 
     useEffect(() => {
         getAccountInfo()
@@ -37,7 +39,16 @@ export default function Account() {
                     {user.savedRecipes ? 
                         <div>
                             <h3>Saved Recipes</h3>
-                            {user.savedRecipes.map((recipe) => <RecipeCard recipe={recipe} />)}
+                            {/* {user.savedRecipes.map((recipe) => <RecipeCard recipe={recipe} />)} */}
+                            <CardsRow heading={""} list={user.savedRecipes} />
+                        </div>
+                        :
+                        <div></div>
+                    }
+                    {user.comments ? 
+                        <div>
+                            <h3>Your comments</h3>
+                            {user.comments.map((comment) => <div>{comment.content}</div>)}
                         </div>
                         :
                         <div></div>
@@ -50,7 +61,13 @@ export default function Account() {
                 :
                 <div>
                     <p>Please sign in or create an account to view your saved recipes and comments. </p>
-                    <button onClick={() => setToken(null)}>Log In</button>
+                    <button onClick={() => {
+                        setToken(null);
+                        setUser(null);
+                        navigate('/login');
+                    }}>
+                        Log In
+                    </button>
                 </div>
             }
         </div>

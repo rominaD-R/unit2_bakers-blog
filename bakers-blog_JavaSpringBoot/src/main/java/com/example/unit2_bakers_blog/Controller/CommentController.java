@@ -2,8 +2,11 @@ package com.example.unit2_bakers_blog.Controller;
 
 import java.util.List;
 import com.example.unit2_bakers_blog.Models.Comment;
+import com.example.unit2_bakers_blog.Models.Recipe;
 import com.example.unit2_bakers_blog.Models.User;
 import com.example.unit2_bakers_blog.Repository.CommentRepository;
+import com.example.unit2_bakers_blog.Repository.RecipeRepository;
+import com.example.unit2_bakers_blog.Repository.UserRepository;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*")
@@ -12,9 +15,13 @@ import org.springframework.web.bind.annotation.*;
 public class CommentController {
 
     private final CommentRepository commentRepository;
+    private final RecipeRepository recipeRepository;
+    private final UserRepository userRepository;
 
-    public CommentController(CommentRepository commentRepository) {
+    public CommentController(CommentRepository commentRepository, RecipeRepository recipeRepository, UserRepository userRepository) {
         this.commentRepository = commentRepository;
+        this.recipeRepository = recipeRepository;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/all")
@@ -46,9 +53,22 @@ public class CommentController {
         return commentRepository.findById(id).orElse(null);
     }
 
-    @PostMapping("/comments")
+    @PostMapping()
     public Comment addItem(@RequestBody Comment comment) {
         return commentRepository.save(comment);
+    }
+
+    @PostMapping("/add/{rid}/{id}")
+    public void addCommentToRecipe(@PathVariable(name = "rid") int rid, @PathVariable(name = "id") int id, @RequestBody Comment comment) {
+        Recipe recipe = recipeRepository.findById(rid).orElse(null);
+        recipe.addComment(comment);
+        User user = userRepository.findById(id).orElse(null);
+        user.addComment(comment);
+        comment.setUser(user);
+        comment.setRecipe(recipe);
+//        recipeRepository.save(recipe);
+//        userRepository.save(user);
+        commentRepository.save(comment);
     }
 
     @PutMapping("/comment/{id}")

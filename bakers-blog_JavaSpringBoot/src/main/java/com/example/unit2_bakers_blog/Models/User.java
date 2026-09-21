@@ -20,7 +20,7 @@ public class User {
 
     public User() { }
 
-    public User(String username, String fName, String lName, String password, String email, String role) {
+    public User(String username, String fName, String lName, String password, String email, String role, List<Recipe> savedRecipes, List<Comment> comments) {
         this.username = username;
         this.fName = fName;
         this.lName = lName;
@@ -28,6 +28,8 @@ public class User {
         this.email = email;
         this.role = role;
         this.createdAt = new java.sql.Timestamp(System.currentTimeMillis());
+        this.savedRecipes = savedRecipes;
+        this.comments = comments;
     }
 
     public int getId() {
@@ -101,6 +103,10 @@ public class User {
         savedRecipes.add(recipe);
     }
 
+    public void unsaveRecipe(Recipe recipe) {
+        savedRecipes.remove(recipe);
+    }
+
     public java.sql.Timestamp getCreatedAt() {
         return createdAt;
     }
@@ -112,5 +118,21 @@ public class User {
     // Comments
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
     private List<Comment> comments;
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
+    }
+
+    public void deleteComment(Comment comment) {
+        comments.remove(comment);
+    }
 
 }

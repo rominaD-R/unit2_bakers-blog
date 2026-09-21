@@ -5,7 +5,6 @@ import CommentSection from '../components/CommentSection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark as fullBookmark } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark as lineBookmark } from '@fortawesome/free-regular-svg-icons';
-// import { faBookmark } from '@fortawesome/free-line-svg-icons';
 import './IndividualRecipe.css'
 import { useStateContext } from '../ContextProvider'
 
@@ -23,7 +22,7 @@ export default function IndividualRecipe() {
         }
     );
 
-    const [commentData, setCommentData] = useState([...currentRecipe.comments]);
+    const [commentData, setCommentData] = useState([]);
     const { token, setToken, user, setUser } = useStateContext();
     const [saved, setSaved] = useState(false);
 
@@ -62,14 +61,72 @@ export default function IndividualRecipe() {
         }
     }, [user, recipeId]);
 
+    // Removing/Unsaving a recipe from user's account
+    const unsaveRecipe = async () => {
+        let url = `http://localhost:8080/users/user/${user.id}/recipe/${recipeId}`;
+        try {
+            console.log("This URL is:  " + url);
+            const data = await fetch(url, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+            })
+            console.log(`Unsaved recipe #${recipeId}`);
+            console.log(data);
+            setSaved(false);
+        } catch (error) {
+            console.log("Error:");
+            console.error(error.message);
+        }
+    }
+
+    // Saving a recipe to the user's account
+    const saveRecipe = async () => {
+        let url = `http://localhost:8080/users/user/${user.id}/recipe/${recipeId}`;
+        try {
+            console.log("This URL is:  " + url);
+                const data = await fetch(url, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        username: user.username,
+                        id: user.id,
+
+                    })
+                })
+                .then((res) => res.json());
+                console.log("Testing saved recipe:  ")
+                console.log(data);
+                setSaved(true);
+            } catch (error) {
+                console.log("Error:");
+                console.error(error.message);
+            }
+    }
+
     console.log(url);
     
     // FUNCTION TO ADD COMMENT ON INDIVIDUAL RECIPES
-    const addComment = (e) => {
+    const addComment = async (e) => {
         e.preventDefault();
         const currentComment = document.getElementById("commentText").value;
-        setCommentData([...commentData, currentComment]);
-         document.getElementById("commentText").value = '';
+        const url = `http://localhost:8080/comments/add/${recipeId}/${user.id}`;
+        try {
+            console.log("This URL is:  " + url);
+            const data = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    content: currentComment,
+                })
+            })
+            .then((res) => res.json());
+            console.log(data);
+        } catch (error) {
+            console.log("Error:");
+            console.error(error.message);
+        }
+        // setCommentData([...commentData, currentComment]);
+        document.getElementById("commentText").value = '';
     }
 
     
@@ -84,11 +141,10 @@ export default function IndividualRecipe() {
 
     return (
         <div className='text-cont individual-recipe-page'>
-            <h2>{recipeData.title}</h2>
-            {saved ? 
-            <FontAwesomeIcon icon={fullBookmark} /> :
-            <FontAwesomeIcon icon={lineBookmark} />
-            }
+            <div>
+                <h2>{recipeData.title}</h2>
+                {saved ? <button onClick={unsaveRecipe}><FontAwesomeIcon icon={fullBookmark} /></button> : <button onClick={saveRecipe}><FontAwesomeIcon icon={lineBookmark} /></button>} 
+            </div>
             <div className='main-img'>
                 <img src={recipeData.mainImageUrl} alt={currentRecipe.title} />
             </div>
@@ -118,7 +174,7 @@ export default function IndividualRecipe() {
                 </ol>
             </div>
             {/* Transformed Comment Section from here into a separate component */}
-
+            {recipeData.comments ? <CommentSection comments={recipeData.comments} onAdd={addComment} /> : <div>none</div>}
         </div>
     )
 }

@@ -12,14 +12,12 @@ public class Comment {
 
     private String content;
     // private int userId;
-//    private int recipeid;
 
     public Comment() { }
 
     public Comment(String content) {
         this.content = content;
         // this.userId = userId;
-//        this.recipeid = recipeid;
     }
 
     // Getters and Setters
@@ -40,14 +38,6 @@ public class Comment {
         this.content = content;
     }
 
-//    public int getUserId() {
-//        return userId;
-//    }
-//
-//    public void setUserId(int userId) {
-//        this.userId = userId;
-//    }
-
 //    public int getRecipeId() {
 //        return recipeid;
 //    }
@@ -57,7 +47,7 @@ public class Comment {
 //    }
 
     @JoinColumn(name = "recipeid", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore
     private Recipe recipe;
 
@@ -69,8 +59,8 @@ public class Comment {
         this.recipe = recipe;
     }
 
-    @JoinColumn(name = "userid", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userid")
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore
     private User user;
 
@@ -80,5 +70,9 @@ public class Comment {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public int getUserId() {
+        return user.getId();
     }
 }
