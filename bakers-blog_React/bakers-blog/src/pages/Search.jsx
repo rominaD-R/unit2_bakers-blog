@@ -33,13 +33,14 @@ function Search() {
     const baseUrl = location.href.replace(location.search, '');
     const searchUrl = 'localhost:8080/recipes/filter'
 
-    const updateUrl = () => {
+    const filterTags = async () => {
         if (!(beginnerCheckbox.checked || advancedCheckbox.checked || glutenCheckbox.value || dairyCheckbox.value || nutCheckbox.value || treenutCheckbox.value || veganCheckbox.value)) {
             return baseUrl;
         }
 
         let newUrl = new URL(`${baseUrl}?`);
         beginnerCheckbox.checked && newUrl.searchParams.append('level', 'beginner');
+        console.log(beginnerCheckbox.checked);
         advancedCheckbox.checked && newUrl.searchParams.append('level', 'advanced');
         glutenCheckbox.checked && newUrl.searchParams.append('allergy', 'gluten');
         dairyCheckbox.checked && newUrl.searchParams.append('allergy', 'dairy');
@@ -47,6 +48,45 @@ function Search() {
         treenutCheckbox.checked && newUrl.searchParams.append('allergy', 'treenut');
         veganCheckbox.checked && newUrl.searchParams.append('allergy', 'vegan');
         history.pushState({}, '', newUrl.toString());
+
+        try {
+            const data = await fetch("http://localhost:8080/recipes/all")
+            .then((res) => res.json())
+            console.log(data);
+            let recipeCopy = [];
+            if (!(beginnerCheckbox.checked || advancedCheckbox.checked || glutenCheckbox.checked || dairyCheckbox.checked || nutCheckbox.checked || treenutCheckbox.checked || veganCheckbox.checked)) {
+                setResults(Array.isArray(data) ? data : []);
+            } else if (results) {
+                results.forEach(recipe => {
+                    console.log("Checking recipe:  " + recipe.title);
+                    if (beginnerCheckbox.checked && recipe.tags.some(tag => tag.tag == 'Beginner')) {
+                        recipeCopy.push(recipe);
+                    }
+                    if (advancedCheckbox.checked && recipe.tags.some(tag => tag.tag == 'Advanced')) {
+                        recipeCopy.push(recipe);
+                    }
+                    if (glutenCheckbox.checked && recipe.tags.some(tag => tag.tag == 'Gluten Free')) {
+                        recipeCopy.push(recipe);
+                    }
+                    if (dairyCheckbox.checked && recipe.tags.some(tag => tag.tag == 'Dairy Free')) {
+                        recipeCopy.push(recipe);
+                    }
+                    if (nutCheckbox.checked && recipe.tags.some(tag => tag.tag == 'Nut Free')) {
+                        recipeCopy.push(recipe);
+                    }
+                    if (treenutCheckbox.checked && recipe.tags.some(tag => tag.tag == 'Tree Nut Free')) {
+                        recipeCopy.push(recipe);
+                    }
+                    if (veganCheckbox.checked && recipe.tags.some(tag => tag.tag == 'Vegan')) {
+                        recipeCopy.push(recipe);
+                    }
+                });
+                console.log(recipeCopy);
+                setResults(recipeCopy);
+            }
+        } catch (error) {
+            console.error(error.message);
+        }
     }
 
     const returnResults = (e) => {
@@ -74,42 +114,45 @@ function Search() {
                 <div>
                     <h3>Difficulty Level</h3>
                     <label for="beginnerLevel">
-                        <input onChange={updateUrl} type="checkbox" name="beginnerLevel" id="beginnerLevel" />
+                        <input onChange={filterTags} type="checkbox" name="beginnerLevel" id="beginnerLevel" />
                         Beginner Level
                     </label>
                     <label for="advancedLevel">
-                        <input onChange={updateUrl} type="checkbox" name="advancedLevel" id="advancedLevel" />
+                        <input onChange={filterTags} type="checkbox" name="advancedLevel" id="advancedLevel" />
                         Advanced Level
                     </label>
                 </div>
                 <div id='allergyFilter'>
                     <h3>Allergies</h3>
                     <label for="glutenFree">
-                        <input onChange={updateUrl} type="checkbox" name="glutenFree" id="glutenFree" />
+                        <input onChange={filterTags} type="checkbox" name="glutenFree" id="glutenFree" />
                         Gluten-Free
                     </label>
                     <label for="dairyFree">
-                        <input onChange={updateUrl} type="checkbox" name="dairyFree" id="dairyFree" />
+                        <input onChange={filterTags} type="checkbox" name="dairyFree" id="dairyFree" />
                         Dairy Free
                     </label>
                     <label for="nutFree">
-                        <input onChange={updateUrl} type="checkbox" name="nutFree" id="nutFree" />
+                        <input onChange={filterTags} type="checkbox" name="nutFree" id="nutFree" />
                         Nut Free
                     </label>
                     <label for="treeNutFree">
-                        <input onChange={updateUrl} type="checkbox" name="treeNutFree" id="treeNutFree" />
+                        <input onChange={filterTags} type="checkbox" name="treeNutFree" id="treeNutFree" />
                         Tree Nut Free
                     </label>
                     <label for="vegan">
-                        <input onChange={updateUrl} type="checkbox" name="vegan" id="vegan" />
+                        <input onChange={filterTags} type="checkbox" name="vegan" id="vegan" />
                         Vegan
                     </label>
                 </div>
             </div>
             <div className='search-bottom'>
+                {results.length != 0 ?
                 <div id='resultsDiv'>
                     {results.map((recipe) => <RecipeCard recipe={recipe} />)}
                 </div>
+                :
+                <div><p>No recipes match your query</p></div>}
             </div>
             </div>
         </div>

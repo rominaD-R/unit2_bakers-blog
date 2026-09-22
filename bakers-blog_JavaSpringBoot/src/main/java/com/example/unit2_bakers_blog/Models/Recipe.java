@@ -157,6 +157,16 @@ public class Recipe {
         return tags;
     }
 
+    public boolean doesTagExist(String tagName) {
+        boolean exists = false;
+        for (Tag tag : tags) {
+            if (tag.getTag().equals(tagName)) {
+                exists = true;
+            };
+        };
+        return exists;
+    };
+
     public void setTags(List<Tag> tags) {
         this.tags = tags;
     }

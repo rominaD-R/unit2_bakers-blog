@@ -10,7 +10,7 @@ export default function CommentSection( { comments, onAdd } ) {
         <hr />
         <h4>Comments</h4>
         {comments.map((comment) => <div className='comment'>{comment.content}</div>)}
-        {user ? 
+        {user && token ? 
           <form id='commentForm' action="">
               <b>Add your comment!</b>
               <div>
