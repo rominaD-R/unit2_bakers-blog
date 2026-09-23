@@ -9,6 +9,22 @@
   <component name="ChangeListManager">
     <list default="true" id="f1612f39-b322-4ff8-9b9d-da9f81bc0de2" name="Changes" comment="trying to connect React front end">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/ParseSearcher/CustomRsqlVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/ParseSearcher/GenericRsqlSpecBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/ParseSearcher/GenericRsqlSpecification.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/ParseSearcher/RsqlSearchOperation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example-json_request" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/json-postman_Example" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lemon-bars_Recipe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mint-bornwies_json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/moist-chocolate_json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pizza-javascript" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pizza-margarita_JSON" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pumpkin-scone_Json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recipe-data_JSON-format" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recipe_04_javascript" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiremisu-cheesecake_JSON" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vegan-peach-pie" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,30 +82,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Spring Boot.Unit2BakersBlogApplication.executor": "Run",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "copilot.chat.legacySessionMetadata.migrated": "true",
-    "git-widget-placeholder": "final-edits",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/rdiazrivero/LaunchCode/unit-2/Final-project/unit2_bakers-blog",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "python.packages.toolwindow.project.migrated.to.right.top.v2": "true",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Unit2BakersBlogApplication.executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;final-edits&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/rdiazrivero/LaunchCode/unit-2/Final-project/unit2_bakers-blog&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;python.packages.toolwindow.project.migrated.to.right.top.v2&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Config" />

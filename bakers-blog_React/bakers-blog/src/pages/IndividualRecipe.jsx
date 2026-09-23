@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { useParams, Link } from 'react-router';
 import { recipeMockData } from '../data/recipes'
 import CommentSection from '../components/CommentSection';
+import RecipeBookmark from '../components/RecipeBookmark';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark as fullBookmark } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark as lineBookmark } from '@fortawesome/free-regular-svg-icons';
@@ -19,7 +20,6 @@ export default function IndividualRecipe() {
         }
     );
 
-    const [commentData, setCommentData] = useState([]);
     const { token, setToken, user, setUser } = useStateContext();
     const [saved, setSaved] = useState(false);
 
@@ -46,6 +46,7 @@ export default function IndividualRecipe() {
         }
     }
 
+    // Checking if the current logged in user has saved the specific recipe or not
     const isRecipeSaved = useCallback(async () => {
         if (user != null) {
             let url = `http://localhost:8080/users/user/${user.id}/savedrecipes`;
@@ -147,9 +148,9 @@ export default function IndividualRecipe() {
 
     return (
         <div className='text-cont individual-recipe-page'>
-            <div>
+            <div id='titleTop'>
                 <h2>{recipeData.title}</h2>
-                {saved ? <button onClick={unsaveRecipe}><FontAwesomeIcon icon={fullBookmark} /></button> : <button onClick={saveRecipe}><FontAwesomeIcon icon={lineBookmark} /></button>} 
+                {user && <RecipeBookmark saved={saved} unsaveRecipe={unsaveRecipe} saveRecipe={saveRecipe} />} 
             </div>
             <div className='main-img'>
                 {recipeData.mainImageUrl ?

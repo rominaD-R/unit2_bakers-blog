@@ -63,6 +63,23 @@ ol li {
     width: auto;
 }
 
+#titleTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: top;
+}
+
+.button-span button {
+    display: inline;
+    font-size: 24px;
+    background: none;
+}
+
+.button-span button:hover {
+    background: none;
+}
+
 #commentForm {
     margin: 10px 0;
 }

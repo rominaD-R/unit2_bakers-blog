@@ -8,9 +8,8 @@ import './Account.css'
 
 export default function Account() {
 
-    // const [token, setToken] = useState("");
     const { token, setToken, user, setUser } = useStateContext();
-     const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const getAccountInfo = useCallback(async () => {
         console.log("Fetching account info:  ");
@@ -41,7 +40,6 @@ export default function Account() {
                     {user.savedRecipes ? 
                         <div>
                             <h3>Saved Recipes</h3>
-                            {/* {user.savedRecipes.map((recipe) => <RecipeCard recipe={recipe} />)} */}
                             <CardsRow heading={""} list={user.savedRecipes} />
                         </div>
                         :

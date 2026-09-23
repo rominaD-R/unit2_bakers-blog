@@ -5,9 +5,6 @@ import { recipeMockData } from '../data/recipes'
 
 function Home() {
 
-    const allTime = recipeMockData.slice(0, 4);         // All time Favorites Recipes which are the first 4 of the original list
-    const heck = recipeMockData.slice(4, 8);      // "New" Recipes which are the last 4 of the original list
-
     const [recipeData, setRecipeData] = useState([]);
     const [newRecipes, setNewRecipes] = useState([]);
 

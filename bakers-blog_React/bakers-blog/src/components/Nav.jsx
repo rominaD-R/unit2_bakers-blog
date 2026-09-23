@@ -9,7 +9,7 @@ function Nav() {
 
      useEffect(() => {
             if (token && token != "") {
-                console.log("haha");
+                console.log("Token exists");
             }
         },[ token ]);
 

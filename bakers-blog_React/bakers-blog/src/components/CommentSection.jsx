@@ -6,6 +6,7 @@ export default function CommentSection( { comments, onAdd, refreshData } ) {
 
   const { token, setToken, user, setUser } = useStateContext();
 
+  // Function to edit comment content
   const editComment = async (comment) => {
     const url = `http://localhost:8080/comments/edit/${comment.id}`;
     const newComment = document.getElementById(comment.id).value;
@@ -27,6 +28,7 @@ export default function CommentSection( { comments, onAdd, refreshData } ) {
     }
   }
 
+  // Function to delete comment
   const deleteComment = async (commentId) => {
     const url = `http://localhost:8080/comments/comment/${commentId}`;
     try {
