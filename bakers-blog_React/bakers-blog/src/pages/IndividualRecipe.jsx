@@ -16,7 +16,6 @@ export default function IndividualRecipe() {
     const [recipeData, setrecipeData] = useState(
         {
             title: "",
-
         }
     );
 
@@ -129,23 +128,22 @@ export default function IndividualRecipe() {
                 })
             })
             console.log(data);
-            getRecipeData();
+            getRecipeData();                                                    // To refresh and show newly added comment
         } catch (error) {
             console.log("Error:");
             console.error(error.message);
         }
-        // setCommentData([...commentData, currentComment]);
         document.getElementById("commentText").value = '';
     }
     
-
+    // Load recipe data when user clicks on recipe card/link
     useEffect(() => {
-            getRecipeData();
-            if (user && user.id) {
-                console.log(user);
-                isRecipeSaved();
-            }
-        },[ getRecipeData, user, isRecipeSaved ]);
+        getRecipeData();
+        if (user && user.id) {
+            console.log(user);
+            isRecipeSaved();
+        }
+    },[ getRecipeData, user, isRecipeSaved ]);
 
     return (
         <div className='text-cont individual-recipe-page'>
@@ -154,7 +152,10 @@ export default function IndividualRecipe() {
                 {saved ? <button onClick={unsaveRecipe}><FontAwesomeIcon icon={fullBookmark} /></button> : <button onClick={saveRecipe}><FontAwesomeIcon icon={lineBookmark} /></button>} 
             </div>
             <div className='main-img'>
-                <img src={recipeData.mainImageUrl} alt={recipeData.title} />
+                {recipeData.mainImageUrl ?
+                    <img src={recipeData.mainImageUrl} alt={recipeData.title} />
+                    : "Error retrieving image"
+                }
             </div>
              <div className='two-col'>
                 <div>
@@ -176,11 +177,11 @@ export default function IndividualRecipe() {
                    {recipeData.steps ? recipeData.steps.map((item) => <li>{item.stepDesc}</li>) : "Error retrieving step"}
                 </ol>
             </div>
-            <div>
-                <ol>
-                   {recipeData.images ? recipeData.images.map((item) => <img src={item.imageUrl} />) : "Error retrieving step"}
-                </ol>
+            {(recipeData.images && recipeData.images.length > 0) &&
+            <div className='images-row'>
+                 {recipeData.images.map((item) => <img src={item.imageUrl} alt='Additional image for recipe'/>) }
             </div>
+            }
             {/* Transformed Comment Section from here into a separate component */}
             {recipeData.comments ? <CommentSection comments={recipeData.comments} onAdd={addComment} refreshData={() => getRecipeData()} /> : <div>none</div>}
         </div>

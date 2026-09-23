@@ -45,14 +45,22 @@ ol li {
     margin-bottom: 14px;
 }
 
-.comment {
-    margin: 6px 0;
-    padding: 6px 0;
-    border-bottom: 1px #72443496 solid;
-}
-
 .comments-section {
     margin-top: 40px;
+}
+
+.images-row {
+    display: flex;
+    flex-direction: row;
+    height: 400px;
+    max-height: 400px;
+    gap: 8px;
+    overflow: hidden;
+}
+
+.images-row img {
+    height: 100%;
+    width: auto;
 }
 
 #commentForm {

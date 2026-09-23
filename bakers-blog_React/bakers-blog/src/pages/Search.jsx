@@ -109,7 +109,7 @@ function Search() {
             </div>
             <div className='results'>
                 <div className='filters'>
-                <div>
+                <div id='difficultyFilter'>
                     <h3>Difficulty Level</h3>
                     <label for="beginnerLevel">
                         <input onChange={filterTags} type="checkbox" name="beginnerLevel" id="beginnerLevel" />

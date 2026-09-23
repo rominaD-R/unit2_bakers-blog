@@ -1,0 +1,14 @@
+.comment {
+    margin: 6px 0;
+    padding: 6px 0;
+    border-bottom: 1px #72443496 solid;
+}
+
+.comment button {
+    margin-right: 4px;
+    padding: 8px 12px;
+}
+
+.comment-buttons {
+    margin: 6px 0;
+}

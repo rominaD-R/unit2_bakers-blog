@@ -1,0 +1,44 @@
+.text-cont.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-cont.login h4 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.login-div {
+    width: 600px;
+    max-width: 600px;
+    margin: auto;
+}
+
+input[type='text'] {
+    margin-bottom: 6px;
+}
+
+.signup-div {
+    max-width: 600px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.log-sign-btn {
+    background: none;
+    background-color: none;
+    text-decoration: underline;
+}
+
+.log-sign-btn:hover {
+    background: none;
+}
+
+#usernameError, #passwordError {
+    color: rgb(159, 22, 4);
+    font-size: 12px;
+    margin-bottom: 8px;
+}

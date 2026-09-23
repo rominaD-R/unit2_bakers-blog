@@ -20,7 +20,7 @@ export default function FeaturedHero() {
               kitchen, with a standard oven, with normal everyday ingredients (no fancy flours required), and without preparing an 
               incredibly time-intensive pizza dough days in advance.
             </p>
-            <Link to={`recipe/${2}`}><button>See Full Recipe</button></Link>
+            <Link to={`recipe/${8}`}><button>See Full Recipe</button></Link>
           </div>
         </motion.div>
       </div>

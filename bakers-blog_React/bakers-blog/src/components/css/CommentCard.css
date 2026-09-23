@@ -1,7 +1,13 @@
 .comment-card {
     background-color: #f4e0ad;
+    color: rgb(40, 18, 13);
     max-width: 300px;
     min-width: 200px;
     padding: 6px 10px;
     border-radius: 5px;
+}
+
+.comment-card:hover {
+    transition: 0.3s;
+    background-color: #f2cd6f;
 }
