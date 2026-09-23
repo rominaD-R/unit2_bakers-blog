@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { useParams, Link } from 'react-router';
 import { recipeMockData } from '../data/recipes'
 import CommentSection from '../components/CommentSection';
+import RecipeBookmark from '../components/RecipeBookmark';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark as fullBookmark } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark as lineBookmark } from '@fortawesome/free-regular-svg-icons';
@@ -16,11 +17,9 @@ export default function IndividualRecipe() {
     const [recipeData, setrecipeData] = useState(
         {
             title: "",
-
         }
     );
 
-    const [commentData, setCommentData] = useState([]);
     const { token, setToken, user, setUser } = useStateContext();
     const [saved, setSaved] = useState(false);
 
@@ -47,6 +46,7 @@ export default function IndividualRecipe() {
         }
     }
 
+    // Checking if the current logged in user has saved the specific recipe or not
     const isRecipeSaved = useCallback(async () => {
         if (user != null) {
             let url = `http://localhost:8080/users/user/${user.id}/savedrecipes`;
@@ -129,32 +129,34 @@ export default function IndividualRecipe() {
                 })
             })
             console.log(data);
-            getRecipeData();
+            getRecipeData();                                                    // To refresh and show newly added comment
         } catch (error) {
             console.log("Error:");
             console.error(error.message);
         }
-        // setCommentData([...commentData, currentComment]);
         document.getElementById("commentText").value = '';
     }
     
-
+    // Load recipe data when user clicks on recipe card/link
     useEffect(() => {
-            getRecipeData();
-            if (user && user.id) {
-                console.log(user);
-                isRecipeSaved();
-            }
-        },[ getRecipeData, user, isRecipeSaved ]);
+        getRecipeData();
+        if (user && user.id) {
+            console.log(user);
+            isRecipeSaved();
+        }
+    },[ getRecipeData, user, isRecipeSaved ]);
 
     return (
         <div className='text-cont individual-recipe-page'>
-            <div>
+            <div id='titleTop'>
                 <h2>{recipeData.title}</h2>
-                {saved ? <button onClick={unsaveRecipe}><FontAwesomeIcon icon={fullBookmark} /></button> : <button onClick={saveRecipe}><FontAwesomeIcon icon={lineBookmark} /></button>} 
+                {user && <RecipeBookmark saved={saved} unsaveRecipe={unsaveRecipe} saveRecipe={saveRecipe} />} 
             </div>
             <div className='main-img'>
-                <img src={recipeData.mainImageUrl} alt={recipeData.title} />
+                {recipeData.mainImageUrl ?
+                    <img src={recipeData.mainImageUrl} alt={recipeData.title} />
+                    : "Error retrieving image"
+                }
             </div>
              <div className='two-col'>
                 <div>
@@ -176,11 +178,11 @@ export default function IndividualRecipe() {
                    {recipeData.steps ? recipeData.steps.map((item) => <li>{item.stepDesc}</li>) : "Error retrieving step"}
                 </ol>
             </div>
-            <div>
-                <ol>
-                   {recipeData.images ? recipeData.images.map((item) => <img src={item.imageUrl} />) : "Error retrieving step"}
-                </ol>
+            {(recipeData.images && recipeData.images.length > 0) &&
+            <div className='images-row'>
+                 {recipeData.images.map((item) => <img src={item.imageUrl} alt='Additional image for recipe'/>) }
             </div>
+            }
             {/* Transformed Comment Section from here into a separate component */}
             {recipeData.comments ? <CommentSection comments={recipeData.comments} onAdd={addComment} refreshData={() => getRecipeData()} /> : <div>none</div>}
         </div>

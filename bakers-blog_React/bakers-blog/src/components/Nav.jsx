@@ -9,7 +9,7 @@ function Nav() {
 
      useEffect(() => {
             if (token && token != "") {
-                console.log("haha");
+                console.log("Token exists");
             }
         },[ token ]);
 
@@ -23,9 +23,8 @@ function Nav() {
             <div className="nav-links">
                 <a><Link to="/">Home</Link></a>
                 <a><Link to="search">Search</Link></a>
-                {/* <a><Link to="/types">Types</Link></a> */}
                 <a><Link to="/about">About</Link></a>
-                {token && user ? <a><button><Link to="/account">My Account</Link></button></a> : <a><button><Link to="/login">Sign In</Link></button></a>}
+                {token && user ? <Link to="/account"><button>My Account</button></Link> : <Link to="/login"><button>Sign In</button></Link>}
             </div>
         </div>
     );

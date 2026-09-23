@@ -45,14 +45,39 @@ ol li {
     margin-bottom: 14px;
 }
 
-.comment {
-    margin: 6px 0;
-    padding: 6px 0;
-    border-bottom: 1px #72443496 solid;
-}
-
 .comments-section {
     margin-top: 40px;
+}
+
+.images-row {
+    display: flex;
+    flex-direction: row;
+    height: 400px;
+    max-height: 400px;
+    gap: 8px;
+    overflow: hidden;
+}
+
+.images-row img {
+    height: 100%;
+    width: auto;
+}
+
+#titleTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: top;
+}
+
+.button-span button {
+    display: inline;
+    font-size: 24px;
+    background: none;
+}
+
+.button-span button:hover {
+    background: none;
 }
 
 #commentForm {

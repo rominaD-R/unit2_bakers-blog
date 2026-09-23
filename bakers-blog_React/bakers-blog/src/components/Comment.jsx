@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons';
-import { faBookmark as lineBookmark } from '@fortawesome/free-regular-svg-icons';
 import { useStateContext } from '../ContextProvider'
+import './css/Comment.css'
 
 export default function Comment( {comment, ownerId, onEdit, onDelete} ) {
     const { token, setToken, user, setUser } = useStateContext();
 
-    const [edit, setEdit] = useState(false);    
+    const [edit, setEdit] = useState(false);                                        // If 'edit' is true, then you are able to edit the comment.
 
     return (
         <div>
@@ -23,16 +23,16 @@ export default function Comment( {comment, ownerId, onEdit, onDelete} ) {
                 </div>
             :
                 <div className='comment' id={comment}>
-                {comment.content}
-                {user && user.id == ownerId ? 
-                    <div>
-                        <button onClick={() => setEdit(true)}><FontAwesomeIcon icon={faPencil} /></button>
-                        <button onClick={onDelete}><FontAwesomeIcon icon={faTrashCan} /></button>
-                    </div>
-                    :
-                    <div></div>
-                }
-            </div>
+                    <span>{comment.content}</span>
+                    {user && user.id == ownerId ? 
+                        <div className='comment-buttons'>
+                            <button onClick={() => setEdit(true)}><FontAwesomeIcon icon={faPencil} /></button>
+                            <button onClick={onDelete}><FontAwesomeIcon icon={faTrashCan} /></button>
+                        </div>
+                        :
+                        <div></div>
+                    }
+                </div>
         }
         </div>
     )
