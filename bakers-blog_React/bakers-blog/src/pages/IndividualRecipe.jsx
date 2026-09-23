@@ -12,8 +12,6 @@ export default function IndividualRecipe() {
 
     const { id } = useParams();                                                 // Get ID of recipe from the URL, passed by the RecipeCard that was clicked on
     let recipeId = id;
-    let currentRecipe = recipeMockData.filter((item) => item.id == id);         // Find the recipe in the array from the ID
-    currentRecipe = currentRecipe[0];                                           // The currentRecipe returned from line 10 is returned in an array, so this is to make it as a single object
 
     const [recipeData, setrecipeData] = useState(
         {
@@ -27,7 +25,7 @@ export default function IndividualRecipe() {
     const [saved, setSaved] = useState(false);
 
     const url = `http://localhost:8080/recipes/recipe/${id}`;
-    const testAPI = useCallback(async () => {
+    const getRecipeData = useCallback(async () => {
         try {
             const data = await fetch(url)
                 .then((res) => res.json())
@@ -37,6 +35,17 @@ export default function IndividualRecipe() {
             console.error(error.message);
         }
     }, [setrecipeData, url]);
+
+    const refreshRecipeData = async () => {
+        try {
+            const data = await fetch(url)
+                .then((res) => res.json())
+            console.log(data);
+            setrecipeData((data) ? data : {});
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
 
     const isRecipeSaved = useCallback(async () => {
         if (user != null) {
@@ -116,11 +125,11 @@ export default function IndividualRecipe() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
-                    content: currentComment,
+                    content: currentComment
                 })
             })
-            .then((res) => res.json());
             console.log(data);
+            getRecipeData();
         } catch (error) {
             console.log("Error:");
             console.error(error.message);
@@ -128,16 +137,15 @@ export default function IndividualRecipe() {
         // setCommentData([...commentData, currentComment]);
         document.getElementById("commentText").value = '';
     }
-
     
 
     useEffect(() => {
-            testAPI();
+            getRecipeData();
             if (user && user.id) {
                 console.log(user);
                 isRecipeSaved();
             }
-        },[ testAPI, user, isRecipeSaved ]);
+        },[ getRecipeData, user, isRecipeSaved ]);
 
     return (
         <div className='text-cont individual-recipe-page'>
@@ -146,7 +154,7 @@ export default function IndividualRecipe() {
                 {saved ? <button onClick={unsaveRecipe}><FontAwesomeIcon icon={fullBookmark} /></button> : <button onClick={saveRecipe}><FontAwesomeIcon icon={lineBookmark} /></button>} 
             </div>
             <div className='main-img'>
-                <img src={recipeData.mainImageUrl} alt={currentRecipe.title} />
+                <img src={recipeData.mainImageUrl} alt={recipeData.title} />
             </div>
              <div className='two-col'>
                 <div>
@@ -174,7 +182,7 @@ export default function IndividualRecipe() {
                 </ol>
             </div>
             {/* Transformed Comment Section from here into a separate component */}
-            {recipeData.comments ? <CommentSection comments={recipeData.comments} onAdd={addComment} /> : <div>none</div>}
+            {recipeData.comments ? <CommentSection comments={recipeData.comments} onAdd={addComment} refreshData={() => getRecipeData()} /> : <div>none</div>}
         </div>
     )
 }

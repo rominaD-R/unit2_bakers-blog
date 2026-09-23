@@ -4,6 +4,7 @@ import com.example.unit2_bakers_blog.Models.*;
 import com.example.unit2_bakers_blog.Repository.*;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -65,6 +66,29 @@ public class RecipeController {
     public Recipe getItem(@PathVariable(name = "id") int id) {
         return recipeRepository.findById(id).orElse(null);
     }
+
+//    @GetMapping("/filter")
+//    public List<Recipe> getFilteredRecipes(@RequestParam boolean beginner, @RequestParam boolean advanced, @RequestParam boolean gluten, @RequestParam boolean dairy, @RequestParam boolean nut, @RequestParam boolean treenut, @RequestParam boolean vegan) {
+//        List<Recipe> results = recipeRepository.findAll();
+//        Tag beginnerTag = new Tag();
+//        beginnerTag.setTag("Beginner");
+//        Tag advancedTag = new Tag();
+//        advancedTag.setTag("Advanced");
+//        Tag glutenTag = new Tag();
+//        glutenTag.setTag("Gluten-Free");
+//        Tag dairyTag = new Tag();
+//        dairyTag.setTag("Dairy Free");
+//        Tag nutTag = new Tag();
+//        nutTag.setTag("Nut Free");
+//        Tag treenutTag = new Tag();
+//        treenutTag.setTag("Tree Nut Free");
+//        Tag veganTag = new Tag();
+//        veganTag.setTag("Vegan");
+//        if (beginner) {
+//            System.out.println("BEGINNER");
+//        }
+//        return results;
+//    }
 
     @PostMapping()
     public Recipe addItem(@RequestBody Recipe recipe) {
@@ -134,13 +158,13 @@ public class RecipeController {
         return recipeRepository.save(recipe);
     }
 
-    @PutMapping("/recipes/{id}")
+    @PutMapping("/recipe/{id}")
     public Recipe updateItem(@PathVariable(name = "id") int id, @RequestBody Recipe recipe) {
         recipe.setId(id);
         return recipeRepository.save(recipe);
     }
 
-    @DeleteMapping("/recipes/{id}")
+    @DeleteMapping("/recipe/{id}")
     public void deleteItem(@PathVariable(name = "id") int id) {
         recipeRepository.deleteById(id);
     }

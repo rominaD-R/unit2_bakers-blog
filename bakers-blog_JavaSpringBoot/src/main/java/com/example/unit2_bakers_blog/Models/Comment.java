@@ -59,6 +59,10 @@ public class Comment {
         this.recipe = recipe;
     }
 
+    public int getRecipeid() {
+        return recipe.getId();
+    }
+
     @JoinColumn(name = "userid")
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore

@@ -72,13 +72,21 @@ public class CommentController {
     }
 
     @PutMapping("/comment/{id}")
-    public Comment updateItem(@PathVariable int id, @RequestBody Comment comment) {
-        comment.setId(id);
+    public Comment updateItem(@PathVariable(name = "id") int id, @RequestBody Comment comment) {
+        comment.setContent(comment.getContent());
+        return commentRepository.save(comment);
+    }
+
+    @PatchMapping("/edit/{id}")
+    public Comment editComment(@PathVariable(name = "id") int id, @RequestBody Comment comment) {
+        String newContent = comment.getContent();
+        comment = commentRepository.findById(id).orElse(null);
+        comment.setContent(newContent);
         return commentRepository.save(comment);
     }
 
     @DeleteMapping("/comment/{id}")
-    public void deleteItem(@PathVariable int id) {
+    public void deleteItem(@PathVariable(name = "id") int id) {
         commentRepository.deleteById(id);
     }
 

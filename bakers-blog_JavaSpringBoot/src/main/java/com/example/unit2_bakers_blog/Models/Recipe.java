@@ -19,7 +19,7 @@ public class Recipe {
 
     public Recipe() { }
 
-    public Recipe(String title, String mainImageUrl, List<Utensil> utensils, List<Step> steps, List<Ingredient> ingredients, List<Tag> tags, List<Image> images, int userId, List<Comment> comments) {
+    public Recipe(String title, String mainImageUrl, List<Utensil> utensils, List<Step> steps, List<Ingredient> ingredients, List<Tag> tags, List<Image> images, List<Comment> comments) {
         this.title = title;
         this.mainImageUrl = mainImageUrl;
         this.utensils = utensils;
@@ -27,7 +27,6 @@ public class Recipe {
         this.ingredients = ingredients;
         this.tags = tags;
         this.images = images;
-        this.userId = userId;
         this.comments = comments;
         this.createdAt = new java.sql.Timestamp(System.currentTimeMillis());
     }
@@ -156,6 +155,16 @@ public class Recipe {
     public List<Tag> getTags() {
         return tags;
     }
+
+    public boolean doesTagExist(String tagName) {
+        boolean exists = false;
+        for (Tag tag : tags) {
+            if (tag.getTag().equals(tagName)) {
+                exists = true;
+            };
+        };
+        return exists;
+    };
 
     public void setTags(List<Tag> tags) {
         this.tags = tags;
