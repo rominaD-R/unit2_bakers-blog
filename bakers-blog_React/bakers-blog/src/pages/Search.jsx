@@ -53,37 +53,35 @@ function Search() {
             const data = await fetch("http://localhost:8080/recipes/all")
             .then((res) => res.json())
             console.log(data);
-            let recipeCopy = [];
+            let recipeCopy = (Array.isArray(data) ? data : []);
             if (!(beginnerCheckbox.checked || advancedCheckbox.checked || glutenCheckbox.checked || dairyCheckbox.checked || nutCheckbox.checked || treenutCheckbox.checked || veganCheckbox.checked)) {
+                console.log("IS THIS WORKINGGGGGG")
                 setResults(Array.isArray(data) ? data : []);
-            } else if (results) {
-                results.forEach(recipe => {
-                    console.log("Checking recipe:  " + recipe.title);
-                    if (beginnerCheckbox.checked && recipe.tags.some(tag => tag.tag == 'Beginner')) {
-                        recipeCopy.push(recipe);
-                    }
-                    if (advancedCheckbox.checked && recipe.tags.some(tag => tag.tag == 'Advanced')) {
-                        recipeCopy.push(recipe);
-                    }
-                    if (glutenCheckbox.checked && recipe.tags.some(tag => tag.tag == 'Gluten Free')) {
-                        recipeCopy.push(recipe);
-                    }
-                    if (dairyCheckbox.checked && recipe.tags.some(tag => tag.tag == 'Dairy Free')) {
-                        recipeCopy.push(recipe);
-                    }
-                    if (nutCheckbox.checked && recipe.tags.some(tag => tag.tag == 'Nut Free')) {
-                        recipeCopy.push(recipe);
-                    }
-                    if (treenutCheckbox.checked && recipe.tags.some(tag => tag.tag == 'Tree Nut Free')) {
-                        recipeCopy.push(recipe);
-                    }
-                    if (veganCheckbox.checked && recipe.tags.some(tag => tag.tag == 'Vegan')) {
-                        recipeCopy.push(recipe);
-                    }
-                });
-                console.log(recipeCopy);
+            } else {
+                if (beginnerCheckbox.checked) {
+                    recipeCopy = results.filter((recipe) => recipe.tags.some(tag => tag.tag == 'Beginner'));
+                }
+                if (advancedCheckbox.checked) {
+                    recipeCopy = results.filter((recipe) => recipe.tags.some(tag => tag.tag == 'Advanced'));
+                }
+                if (glutenCheckbox.checked) {
+                    recipeCopy = results.filter((recipe) => recipe.tags.some(tag => tag.tag == 'Gluten Free'));
+                }
+                if (dairyCheckbox.checked) {
+                    recipeCopy = results.filter((recipe) => recipe.tags.some(tag => tag.tag == 'Dairy Free'));
+                }
+                if (nutCheckbox.checked) {
+                    recipeCopy = results.filter((recipe) => recipe.tags.some(tag => tag.tag == 'Nut Free'));
+                }
+                if (treenutCheckbox.checked) {
+                    recipeCopy = results.filter((recipe) => recipe.tags.some(tag => tag.tag == 'Tree Nut Free'));
+                }
+                if (veganCheckbox.checked) {
+                    recipeCopy = results.filter((recipe) => recipe.tags.some(tag => tag.tag == 'Vegan'));
+                }
                 setResults(recipeCopy);
-            }
+                };
+            console.log(recipeCopy);
         } catch (error) {
             console.error(error.message);
         }
@@ -94,7 +92,7 @@ function Search() {
         setSearch(value);
         let actualResults = results.filter((recipe) => recipe.title.toLowerCase().includes(search.toLowerCase()) == true);       // if user types an input in all caps or mixed capitilization, then this transforms it to check ONLY if the letters match
         if (value == '') {
-            actualResults = recipeMockData;             // if there's nothing in the search bar, just return all the recipes available
+            filterTags();             // if there's nothing in the search bar, just return all the recipes available
         }
         setResults(actualResults);
     };

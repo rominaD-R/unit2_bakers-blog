@@ -8,15 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1612f39-b322-4ff8-9b9d-da9f81bc0de2" name="Changes" comment="trying to connect React front end">
-      <change afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/ParseSearcher/CustomRsqlVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/ParseSearcher/GenericRsqlSpecBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/ParseSearcher/GenericRsqlSpecification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/ParseSearcher/RsqlSearchOperation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Controller/CommentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Controller/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Controller/RecipeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Comment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Repository/RecipeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Repository/RecipeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Step.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Step.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

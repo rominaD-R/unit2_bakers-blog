@@ -1,0 +1,39 @@
+import React, { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark as lineBookmark } from '@fortawesome/free-regular-svg-icons';
+import { useStateContext } from '../ContextProvider'
+
+export default function Comment( {comment, ownerId, onEdit, onDelete} ) {
+    const { token, setToken, user, setUser } = useStateContext();
+
+    const [edit, setEdit] = useState(false);    
+
+    return (
+        <div>
+            {edit ? 
+                <div>
+                    <input type="text" name="editComment" id={comment.id} />
+                    <button onClick={() => {
+                        setEdit(false);
+                        onEdit();
+                    }}>
+                        Edit Comment
+                    </button>
+                </div>
+            :
+                <div className='comment' id={comment}>
+                {comment.content}
+                {user && user.id == ownerId ? 
+                    <div>
+                        <button onClick={() => setEdit(true)}><FontAwesomeIcon icon={faPencil} /></button>
+                        <button onClick={onDelete}><FontAwesomeIcon icon={faTrashCan} /></button>
+                    </div>
+                    :
+                    <div></div>
+                }
+            </div>
+        }
+        </div>
+    )
+}

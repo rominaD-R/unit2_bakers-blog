@@ -18,10 +18,9 @@ public class Step {
     public Step() {
     }
 
-    public Step(String stepDesc, int orderNum, int rId) {
+    public Step(String stepDesc, int orderNum) {
         this.stepDesc = stepDesc;
         this.orderNum = orderNum;
-        this.rId = rId;
     }
 
     public int getId() {

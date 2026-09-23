@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useStateContext } from '../ContextProvider';
 import RecipeCard from '../components/RecipeCard';
+import CommentCard from '../components/CommentCard';
 import CardsRow from '../components/CardsRow';
 import { Navigate, useNavigate } from 'react-router-dom';
+import './Account.css'
 
 export default function Account() {
 
@@ -48,14 +50,13 @@ export default function Account() {
                     {user.comments ? 
                         <div>
                             <h3>Your comments</h3>
-                            {user.comments.map((comment) => <div>{comment.content}</div>)}
+                            <div className='comments-row'>
+                                {user.comments.map((comment) => <CommentCard comment={comment} />)}
+                            </div>
                         </div>
                         :
                         <div></div>
                     }
-                    <div>
-                        <h3>Your comments</h3>
-                    </div>
                     <button onClick={() => setToken(null)}>Log Out</button>
                 </div>
                 :
