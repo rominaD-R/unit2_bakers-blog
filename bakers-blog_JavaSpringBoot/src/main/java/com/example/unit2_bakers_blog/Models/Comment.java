@@ -11,13 +11,11 @@ public class Comment {
     private int id;
 
     private String content;
-    // private int userId;
 
     public Comment() { }
 
     public Comment(String content) {
         this.content = content;
-        // this.userId = userId;
     }
 
     // Getters and Setters
@@ -37,14 +35,6 @@ public class Comment {
     public void setContent(String content) {
         this.content = content;
     }
-
-//    public int getRecipeId() {
-//        return recipeid;
-//    }
-//
-//    public void setRecipeId(int recipeId) {
-//        this.recipeId = recipeId;
-//    }
 
     @JoinColumn(name = "recipeid", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.EAGER)

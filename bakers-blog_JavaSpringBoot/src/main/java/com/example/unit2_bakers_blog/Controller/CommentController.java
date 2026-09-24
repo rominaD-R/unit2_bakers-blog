@@ -66,8 +66,6 @@ public class CommentController {
         user.addComment(comment);
         comment.setUser(user);
         comment.setRecipe(recipe);
-//        recipeRepository.save(recipe);
-//        userRepository.save(user);
         commentRepository.save(comment);
     }
 

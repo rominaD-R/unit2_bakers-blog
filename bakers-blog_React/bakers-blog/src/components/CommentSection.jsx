@@ -11,7 +11,6 @@ export default function CommentSection( { comments, onAdd, refreshData } ) {
     const url = `http://localhost:8080/comments/edit/${comment.id}`;
     const newComment = document.getElementById(comment.id).value;
     try {
-      console.log("This URL is:  " + url);
       const data = await fetch(url, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
@@ -20,7 +19,6 @@ export default function CommentSection( { comments, onAdd, refreshData } ) {
         })
       })
       .then((res) => res.json());
-      console.log(data);
       refreshData();
     } catch (error) {
       console.log("Error:");
@@ -32,7 +30,6 @@ export default function CommentSection( { comments, onAdd, refreshData } ) {
   const deleteComment = async (commentId) => {
     const url = `http://localhost:8080/comments/comment/${commentId}`;
     try {
-      console.log("This URL is:  " + url);
       await fetch(url, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },

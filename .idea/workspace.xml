@@ -9,22 +9,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f1612f39-b322-4ff8-9b9d-da9f81bc0de2" name="Changes" comment="trying to connect React front end">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/ParseSearcher/CustomRsqlVisitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/ParseSearcher/GenericRsqlSpecBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/ParseSearcher/GenericRsqlSpecification.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/ParseSearcher/RsqlSearchOperation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example-json_request" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/json-postman_Example" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lemon-bars_Recipe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mint-bornwies_json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/moist-chocolate_json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pizza-javascript" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pizza-margarita_JSON" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pumpkin-scone_Json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipe-data_JSON-format" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipe_04_javascript" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tiremisu-cheesecake_JSON" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vegan-peach-pie" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Controller/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Controller/RecipeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/bakers-blog_JavaSpringBoot/src/main/java/com/example/unit2_bakers_blog/Models/Comment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

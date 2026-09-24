@@ -19,7 +19,6 @@ export default function LogSignIn() {
         const email = document.getElementById("email").value;
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
-        console.log("Sign up clicked!");
         try {
             if ((username.trim() == '') || (password.trim() == '') || (fName.trim() == '') || (lName.trim() == '') || (email.trim() == '')) {
                 throw Error;
@@ -85,7 +84,6 @@ export default function LogSignIn() {
         e.preventDefault();
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
-        console.log("Login clicked!!")
         try {
             await fetch("http://localhost:8080/auth/login", {
                 method: "POST",
@@ -96,7 +94,6 @@ export default function LogSignIn() {
                 }),
             }).then(res => res.json())
             .then(data => {
-                console.log(data.accessToken.token);
                 setToken(data.accessToken.token);
             })
         } catch(error) {
@@ -122,7 +119,6 @@ export default function LogSignIn() {
                 }
             }
         }
-        console.log(token);
     }
 
     // Navigate to Account page after user successfully logs in

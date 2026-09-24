@@ -12,8 +12,6 @@ export default function Account() {
     const navigate = useNavigate();
 
     const getAccountInfo = useCallback(async () => {
-        console.log("Fetching account info:  ");
-        console.log(`Token is:  ` + token);
         try {
             await fetch("http://localhost:8080/users/current", {
                 method: "GET",
@@ -24,7 +22,6 @@ export default function Account() {
             .then(data => setUser(data))
         } catch (error) {
             console.error(error.message);
-            console.log("ERROR!!")
         }
     }, [token, setUser]);
 

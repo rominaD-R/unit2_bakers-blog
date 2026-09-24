@@ -13,7 +13,6 @@ function Types() {
         console.log(url);
         try {
             const data = await fetch(url).then((res) => res.json());
-            console.log("Got Tag data: ")
             console.log(data);
             setRecipes(Array.isArray(data) ? data : []);
         } catch (error) {

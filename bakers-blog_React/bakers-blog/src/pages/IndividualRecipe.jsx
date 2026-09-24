@@ -52,12 +52,7 @@ export default function IndividualRecipe() {
             let url = `http://localhost:8080/users/user/${user.id}/savedrecipes`;
             try {
                 const data = await fetch(url).then((res) => res.json());
-                console.log("User's saved recipes:  ");
-                console.log(data);
-                console.log("TRYING TO FIND RECIPE IN USERS SAVED RECIPES")
                 const isSaved = data.find(({ id }) => id == recipeId);
-                console.log("DID WE GET THE OBJECT???")
-                console.log(isSaved);
                 if (isSaved) {
                     setSaved(true);
                 } else {
@@ -74,12 +69,10 @@ export default function IndividualRecipe() {
     const unsaveRecipe = async () => {
         let url = `http://localhost:8080/users/user/${user.id}/recipe/${recipeId}`;
         try {
-            console.log("This URL is:  " + url);
             const data = await fetch(url, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
             })
-            console.log(`Unsaved recipe #${recipeId}`);
             console.log(data);
             setSaved(false);
         } catch (error) {
@@ -92,27 +85,23 @@ export default function IndividualRecipe() {
     const saveRecipe = async () => {
         let url = `http://localhost:8080/users/user/${user.id}/recipe/${recipeId}`;
         try {
-            console.log("This URL is:  " + url);
-                const data = await fetch(url, {
-                    method: 'PATCH',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        username: user.username,
-                        id: user.id,
+            const data = await fetch(url, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    username: user.username,
+                    id: user.id,
 
-                    })
                 })
-                .then((res) => res.json());
-                console.log("Testing saved recipe:  ")
-                console.log(data);
-                setSaved(true);
-            } catch (error) {
-                console.log("Error:");
-                console.error(error.message);
-            }
+            })
+            .then((res) => res.json());
+            console.log(data);
+            setSaved(true);
+        } catch (error) {
+            console.log("Error:");
+            console.error(error.message);
+        }
     }
-
-    console.log(url);
     
     // FUNCTION TO ADD COMMENT ON INDIVIDUAL RECIPES
     const addComment = async (e) => {
@@ -120,7 +109,6 @@ export default function IndividualRecipe() {
         const currentComment = document.getElementById("commentText").value;
         const url = `http://localhost:8080/comments/add/${recipeId}/${user.id}`;
         try {
-            console.log("This URL is:  " + url);
             const data = await fetch(url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -141,7 +129,6 @@ export default function IndividualRecipe() {
     useEffect(() => {
         getRecipeData();
         if (user && user.id) {
-            console.log(user);
             isRecipeSaved();
         }
     },[ getRecipeData, user, isRecipeSaved ]);

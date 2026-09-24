@@ -40,7 +40,6 @@ function Search() {
 
         let newUrl = new URL(`${baseUrl}?`);
         beginnerCheckbox.checked && newUrl.searchParams.append('level', 'beginner');
-        console.log(beginnerCheckbox.checked);
         advancedCheckbox.checked && newUrl.searchParams.append('level', 'advanced');
         glutenCheckbox.checked && newUrl.searchParams.append('allergy', 'gluten');
         dairyCheckbox.checked && newUrl.searchParams.append('allergy', 'dairy');
@@ -55,7 +54,6 @@ function Search() {
             console.log(data);
             let recipeCopy = (Array.isArray(data) ? data : []);
             if (!(beginnerCheckbox.checked || advancedCheckbox.checked || glutenCheckbox.checked || dairyCheckbox.checked || nutCheckbox.checked || treenutCheckbox.checked || veganCheckbox.checked)) {
-                console.log("IS THIS WORKINGGGGGG")
                 setResults(Array.isArray(data) ? data : []);
             } else {
                 if (beginnerCheckbox.checked) {
@@ -81,7 +79,6 @@ function Search() {
                 }
                 setResults(recipeCopy);
                 };
-            console.log(recipeCopy);
         } catch (error) {
             console.error(error.message);
         }

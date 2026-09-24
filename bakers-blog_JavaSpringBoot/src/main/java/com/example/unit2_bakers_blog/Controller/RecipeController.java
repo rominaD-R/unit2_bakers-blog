@@ -67,29 +67,6 @@ public class RecipeController {
         return recipeRepository.findById(id).orElse(null);
     }
 
-//    @GetMapping("/filter")
-//    public List<Recipe> getFilteredRecipes(@RequestParam boolean beginner, @RequestParam boolean advanced, @RequestParam boolean gluten, @RequestParam boolean dairy, @RequestParam boolean nut, @RequestParam boolean treenut, @RequestParam boolean vegan) {
-//        List<Recipe> results = recipeRepository.findAll();
-//        Tag beginnerTag = new Tag();
-//        beginnerTag.setTag("Beginner");
-//        Tag advancedTag = new Tag();
-//        advancedTag.setTag("Advanced");
-//        Tag glutenTag = new Tag();
-//        glutenTag.setTag("Gluten-Free");
-//        Tag dairyTag = new Tag();
-//        dairyTag.setTag("Dairy Free");
-//        Tag nutTag = new Tag();
-//        nutTag.setTag("Nut Free");
-//        Tag treenutTag = new Tag();
-//        treenutTag.setTag("Tree Nut Free");
-//        Tag veganTag = new Tag();
-//        veganTag.setTag("Vegan");
-//        if (beginner) {
-//            System.out.println("BEGINNER");
-//        }
-//        return results;
-//    }
-
     @PostMapping()
     public Recipe addItem(@RequestBody Recipe recipe) {
         List<Utensil> utensils = recipe.getUtensils()
@@ -106,7 +83,6 @@ public class RecipeController {
 
         System.out.println("Setting utensils:  ");
         recipe.setUtensils(utensils);
-        System.out.println("We have set the utensils!!");
 
         List<Ingredient> ingredients = recipe.getIngredients()
                 .stream()

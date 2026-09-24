@@ -27,30 +27,9 @@ function Home() {
         }
         }, []);
 
-    const testUrl = async () => {
-        const url = "http://localhost:8080/recipes/all";
-        try {
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`Response status: ${response.status}`);
-            }
-
-            const result = await response.json();
-            console.log(result);
-            setRecipeData(result);
-            let reversedArray = result.reverse();
-            setNewRecipes(reversedArray);
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-
     useEffect(() => {
         getData();
     },[ getData ])
-
-    // getData();
-    console.log(recipeData);
 
     return (
         <div>
